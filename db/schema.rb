@@ -10,7 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180911194453) do
+ActiveRecord::Schema.define(version: 20180911200751) do
+
+  create_table "profiles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.text     "image_data"
+    t.string   "age",              default: ""
+    t.string   "city",             default: ""
+    t.string   "state",            default: ""
+    t.string   "country",          default: ""
+    t.string   "website",          default: ""
+    t.string   "twitter_handle",   default: ""
+    t.string   "twitter_url",      default: ""
+    t.string   "instagram_handle", default: ""
+    t.string   "instagram_url",    default: ""
+    t.string   "snapchat_handle",  default: ""
+    t.string   "snapchat_url",     default: ""
+    t.text     "biography",        default: ""
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",   null: false
