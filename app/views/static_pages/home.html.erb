@@ -1,1 +1,15 @@
 <h1>Welcome to BlooTeeVee!</h1>
+
+<div>
+  <% if user_signed_in? %>
+    <%= current_user.username %>
+    <% if user.profile.first_name.blank? %>
+      You have a profile.
+    <% else %>
+      Your profile is broken.
+    <% end %>
+  <% else %>
+    <div><%= link_to "sign in", sign_in_path %></div>
+    <div><%= link_to "register", register_path %></div>
+  <% end %>
+</div>
