@@ -2,8 +2,9 @@
 
 <div>
   <% if user_signed_in? %>
-    <%= current_user.username %>
-    <% if user.profile.first_name.blank? %>
+    <%= current_user.username %></br>
+    <div><%= link_to "sign out", sign_out_path %></div>
+    <% if current_user.profile.first_name.blank? %>
       You have a profile.
     <% else %>
       Your profile is broken.
