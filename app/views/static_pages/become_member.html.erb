@@ -1,0 +1,21 @@
+<h1>What a membership is</h1>
+
+<div>Prevents spam - a lot of videos on the internet are dumb as hell. This makes sure only content creators who are serious are uploading videos</div>
+
+<div>Allows fans to subscribe to you - fans can subscribe to your premium content for just 2$ a month. </div>
+
+<div>Allows you to upload videos - what’s a video hosting site without videos</div>
+
+<div>Allows us to cover the cost of hosting - video hosting isn’t cheap. It costs around .02$ per GB of image and video. That doesn’t seem like a lot, but it adds up. A 4 minute video is around 1 GB. If you upload 30 4 minute videos a month it costs 1.80 per month.</div>
+
+<div>
+  <% if user_signed_in? %>
+    <% if @customer.default_source.blank? %>
+      <%= link_to "Add a card", user_edit_source_path(current_user) %>
+    <% elsif current_user.merchant.nil? %>
+      <%= link_to "Become a merchant", new_user_merchant_path(current_user) %>
+    <% end %>
+  <% end %>
+
+  This is where button to add card on file OR subscribe via form or create a merchant account. if they have a merchant account this page doesnt appear.
+</div>

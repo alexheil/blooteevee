@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   root 'static_pages#home'
 
-  get 'become-member' => 'static_pages#home'
+  get 'become-member' => 'static_pages#become_member'
 
   devise_for :users, controllers: { sessions: "users/sessions", passwords: "users/passwords", registrations: "users/registrations", confirmations: "users/confirmations",  unlocks: "users/unlocks"}
 
@@ -15,12 +15,13 @@ Rails.application.routes.draw do
   resources :users, controller: 'users/users', only: :show do
     resource :profile, controller: 'users/profiles', only: [:edit, :update]
     resource :merchant, controller: 'users/merchants', only: [:new, :create, :edit, :update]
-    get 'edit_source', to: 'users#edit_source', path: 'users/:id/edit-source'
-    patch 'update_source', to: 'users#update_source', path: 'users/:id/update-source'
-    get 'edit_plan', to: 'users#edit_plan', path: 'users/:id/edit-plan'
-    patch 'update_plan', to: 'users#update_plan', path: 'users/:id/update-plan'
+    get 'edit_source', to: 'users/users#edit_source', path: 'edit-source'
+    patch 'update_source', to: 'users/users#update_source', path: 'update-source'
+    get 'edit_plan', to: 'users/users#edit_plan', path: 'users/:id/edit-plan'
+    patch 'update_plan', to: 'users/users#update_plan', path: 'users/:id/update-plan'
+    # resources :videos, controller: 'instructors/videos', except: :index do
+    #   resources :comments, controller: 'instructors/comments', only: [:create, :update, :destroy]
+    # end
   end
-
-
 
 end

@@ -15,10 +15,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     @user.create_profile(profile_params)
 
-    # @user.update_attributes(
-    #   plan_id: @user.id,
-    #   product_id: @user.id
-    # )
+    Stripe.api_key = "sk_test_ECd3gjeIEDsGkySmF8FQOC5i"
+
+    customer = Stripe::Customer.create(
+      email: @user.email
+    )
+
+    @user.update_attributes(
+      plan_id: @user.id,
+      product_id: @user.id,
+      customer_id: customer.id
+    )
 
   end
 

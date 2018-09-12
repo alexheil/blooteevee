@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20180911200751) do
     t.boolean  "message_email",          default: true
     t.string   "plan_id",                default: ""
     t.string   "product_id",             default: ""
+    t.string   "customer_id",            default: ""
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
     t.index ["email"], name: "index_users_on_email", unique: true
