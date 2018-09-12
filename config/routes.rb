@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resources :users, controller: 'users/users', only: :show do
     resource :profile, controller: 'users/profiles', only: [:edit, :update]
+    resource :membership, controller: 'users/memberships', only: [:new, :create, :edit, :update]
     resource :merchant, controller: 'users/merchants', only: [:new, :create, :edit, :update]
     get 'edit_source', to: 'users/users#edit_source', path: 'edit-source'
     patch 'update_source', to: 'users/users#update_source', path: 'update-source'

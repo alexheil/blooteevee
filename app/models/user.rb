@@ -13,6 +13,8 @@ class User < ApplicationRecord
   attr_accessor :cardholder
 
   has_one :profile
+  has_one :membership
+  has_one :merchant
 
   before_save :should_generate_new_friendly_id?, if: :username_changed?
   before_save :downcase_username
