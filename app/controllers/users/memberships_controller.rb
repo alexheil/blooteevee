@@ -3,16 +3,13 @@ class Users::MembershipsController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user
   before_action :set_user
+  before_action :is_member
 
   def new
     @membership = Membership.new
   end
 
   def create
-
-    @membership.update_attributes(
-      current_id: params[:membership][:membership_type] + "_id"
-    )
    
     Stripe.api_key = "sk_test_ECd3gjeIEDsGkySmF8FQOC5i"
 
@@ -22,29 +19,21 @@ class Users::MembershipsController < ApplicationController
     # check if customer has a source on file
     if customer.default_source.blank?
       url = "#{request.protocol}#{request.host_with_port}#{request.fullpath}/edit"
-      redirect_to edit_source_path(@user, :url => Base64.encode64(url))
+      redirect_to user_edit_source_path(@user, :url => Base64.encode64(url))
     else
-      # if user has subscription find it if not create it
-      if @membership.membership_id.blank?
-        # create a Stripe membership
-        subscription = Stripe::Subscription.create({
+      # create a Stripe membership
+      subscription = Stripe::Subscription.create({
         customer: customer.id,
-          items: [{plan: @membership.current_id}],
-        })
-      else
-        # grab Stripe membership and update it
-        subscription = Stripe::Subscription.retrieve(@membership.membership_id)
-        subscription.items = [{
-          id: subscription.items.data[0].id,
-          plan: @membership.current_id
-        }]
-      end
+        items: [{
+          plan: params[:membership][:membership_type] + "_id"
+        }],
+      })
 
       subscription.save
 
       if subscription.save
         @user.create_membership(
-          membership_id: subscription.id,
+          stripe_subscription_id: subscription.id,
           membership_type: params[:membership][:membership_type]
         )
         redirect_to user_path(@user)
@@ -75,27 +64,18 @@ class Users::MembershipsController < ApplicationController
       url = "#{request.protocol}#{request.host_with_port}#{request.fullpath}/edit"
       redirect_to edit_source_path(@user, :url => Base64.encode64(url))
     else
-      # if user has subscription find it if not create it
-      if @membership.membership_id.blank?
-        # create a Stripe membership
-        subscription = Stripe::Subscription.create({
-        customer: customer.id,
-          items: [{plan: @membership.current_id}],
-        })
-      else
-        # grab Stripe membership and update it
-        subscription = Stripe::Subscription.retrieve(@membership.membership_id)
-        subscription.items = [{
-          id: subscription.items.data[0].id,
-          plan: @membership.current_id
-        }]
-      end
+      # grab Stripe membership and update it
+      subscription = Stripe::Subscription.retrieve(@membership.membership_id)
+      subscription.items = [{
+        id: subscription.items.data[0].id,
+        plan: @membership.current_id
+      }]
 
       subscription.save
 
       if subscription.save
         @membership.update_attributes(
-          membership_id: subscription.id,
+          stripe_subscription_id: subscription.id,
           membership_type: params[:membership][:membership_type]
         )
         redirect_to user_path(@user)
@@ -108,6 +88,15 @@ class Users::MembershipsController < ApplicationController
 
     def set_user
       @user = current_user
+    end
+
+    def is_member
+      @user = current_user
+      if @user.membership.present?
+        redirect_to edit_user_membership_path(@user, @user.membership)
+      else
+        redirect_to new_user_membership_path(@user)
+      end
     end
 
     def correct_user
