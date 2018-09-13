@@ -13,7 +13,7 @@
 <div>
   <% if user_signed_in? %>
     <% if @customer.default_source.blank? %>
-      <%= link_to "Add a card", user_edit_source_path(current_user) %>
+      <%= link_to "Add a card", edit_user_source_path(current_user) %>
     <% elsif current_user.membership.nil? %>
       <%= link_to "Become a member", new_user_membership_path(current_user) %>
     <% elsif current_user.merchant.nil? %>

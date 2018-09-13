@@ -2,10 +2,11 @@
 
 <div>
   <% if user_signed_in? %>
+  <%= link_to 'Become member', become_member_path %></br>
     <%= current_user.username %></br>
     <%= current_user.membership.membership_type if current_user.membership.present? %></br>
     <%= current_user.merchant.first_name if current_user.merchant.present? %></br>
-    <%= current_user.plan.amount if current_user.plan.present? %>
+    <%= current_user.plan.amount if current_user.plan.present? %><%= link_to "New plan", new_user_plan_path(current_user) %>
     <div><%= link_to "sign out", sign_out_path %></div>
     <% if current_user.profile.first_name.blank? %>
       You have a profile.

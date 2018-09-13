@@ -17,10 +17,10 @@ class User < ApplicationRecord
   has_one :merchant
   has_one :plan
 
-  has_many :active_subscribtions, class_name: "Subscription", foreign_key: "subscriber_id", dependent: :destroy
-  has_many :passive_subscribtions, class_name: "Subscription", foreign_key: "subscribed_id", dependent: :destroy
-  has_many :subscribing, through: :active_subscribtions,  source: :followed
-  has_many :subscribers, through: :passive_subscribtions, source: :follower
+  has_many :active_subscriptions, class_name: "Subscription", foreign_key: "subscriber_id", dependent: :destroy
+  has_many :passive_subscriptions, class_name: "Subscription", foreign_key: "subscribed_id", dependent: :destroy
+  has_many :subscribing, through: :active_subscriptions,  source: :subscribed
+  has_many :subscribers, through: :passive_subscriptions, source: :subscriber
 
   before_save :should_generate_new_friendly_id?, if: :username_changed?
   before_save :downcase_username
@@ -38,6 +38,23 @@ class User < ApplicationRecord
     elsif conditions.has_key?(:username) || conditions.has_key?(:email)
       where(conditions.to_h).first
     end
+  end
+
+  def subscribe(other_user)
+    subscribing << other_user
+  end
+
+  def unsubscribe(other_user)
+    subscribing.delete(other_user)
+  end
+
+  def subscribing?(other_user)
+    subscribing.include?(other_user)
+  end
+
+  def feed
+    subscribing_ids = "SELECT subscribed_id FROM relationships WHERE  subscriber_id = :user_id"
+    # Video.where("user_id IN (#{subscribing_ids}) OR user_id = :user_id", user_id: id)
   end
 
   private
