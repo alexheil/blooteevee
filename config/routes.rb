@@ -20,8 +20,7 @@ Rails.application.routes.draw do
     resource :merchant, controller: 'users/merchants', only: [:new, :create, :edit, :update]
     get 'edit_source', to: 'users/users#edit_source', path: 'edit-source'
     patch 'update_source', to: 'users/users#update_source', path: 'update-source'
-    get 'edit_plan', to: 'users/users#edit_plan', path: 'users/:id/edit-plan'
-    patch 'update_plan', to: 'users/users#update_plan', path: 'users/:id/update-plan'
+    resources :plans, controller: 'users/plans', only: [:new, :create, :edit, :update]
     # resources :videos, controller: 'instructors/videos', except: :index do
     #   resources :comments, controller: 'instructors/comments', only: [:create, :update, :destroy]
     # end

@@ -1,0 +1,27 @@
+<%= provide(:title, "Your Subscription") %>
+
+<div class="wrapper">
+  <div class="container">
+    <div class="form-container padding-vertical">
+
+      <div class="padding-bottom center mid-text border-bottom">
+        Edit your subscription
+      </div>
+
+      <div class="padding-top">
+        <%= form_for(@plan, url: user_plan_path) do |f| %>
+          <div class="field">
+            <%= f.label :amount, "Amount" %><span class="dark mini-text"> Your subscription currently costs <%= @user.plan.amount %> <%= @user.plan.currency.upcase %>.</span>
+            <%= f.text_field :amount, class: "text-field" %>
+          </div>
+          <div class="field">
+            <%= f.label :currency %>
+            <%= f.select :currency, options_for_select(currency) %>
+          </div>
+          <%= f.submit "Update subscription", data: { disable_with: 'Updating...' }, class: "submit-button" %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

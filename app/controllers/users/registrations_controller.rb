@@ -22,8 +22,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     )
 
     @user.update_attributes(
-      plan_id: @user.id,
-      product_id: @user.id,
       customer_id: customer.id
     )
 

@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_one :profile
   has_one :membership
   has_one :merchant
+  has_one :plan
 
   has_many :active_subscribtions, class_name: "Subscription", foreign_key: "subscriber_id", dependent: :destroy
   has_many :passive_subscribtions, class_name: "Subscription", foreign_key: "subscribed_id", dependent: :destroy
