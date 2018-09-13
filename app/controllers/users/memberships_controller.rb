@@ -3,7 +3,8 @@ class Users::MembershipsController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user
   before_action :set_user
-  before_action :is_member
+  before_action :yes_member, only: [:new, :create]
+  before_action :no_member, only: [:edit, :update]
 
   def new
     @membership = Membership.new
@@ -92,9 +93,23 @@ class Users::MembershipsController < ApplicationController
 
     def is_member
       @user = current_user
+      if @user.membership.nil?
+        redirect_to new_user_membership_path(@user)
+      else
+        redirect_to edit_user_membership_path(@user, @user.membership)
+      end
+    end
+
+    def yes_member
+      @user = current_user
       if @user.membership.present?
         redirect_to edit_user_membership_path(@user, @user.membership)
-      else
+      end
+    end
+
+    def no_member
+      @user = current_user
+      if @user.membership.nil?
         redirect_to new_user_membership_path(@user)
       end
     end
