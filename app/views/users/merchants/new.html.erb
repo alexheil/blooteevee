@@ -10,7 +10,7 @@
 
       <div class="padding-top">
         <%= form_for(@merchant, url: user_merchant_path) do |f| %>
-          <%= f.hidden_field :instructor_id %>
+          <%= f.hidden_field :user_id %>
           <%= render 'partials/errors/merchant_errors' %>
           
           <div class="flex">

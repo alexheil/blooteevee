@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   
   root 'static_pages#home'
 
+  get 'privacy' => 'static_pages#privacy'
+  get 'terms' => 'static_pages#terms'
   get 'become-member' => 'static_pages#become_member'
 
   devise_for :users, controllers: { sessions: "users/sessions", passwords: "users/passwords", registrations: "users/registrations", confirmations: "users/confirmations",  unlocks: "users/unlocks"}
