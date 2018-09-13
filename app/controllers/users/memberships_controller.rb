@@ -102,7 +102,7 @@ class Users::MembershipsController < ApplicationController
 
     def yes_member
       @user = current_user
-      if @user.membership.present?
+      if @user.membership
         redirect_to edit_user_membership_path(@user, @user.membership)
       end
     end

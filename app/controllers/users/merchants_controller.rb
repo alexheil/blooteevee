@@ -3,7 +3,7 @@ class Users::MerchantsController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user
   before_action :set_user
-  before_action :have_merchant_account, only: [:new, :create]
+  before_action :yes_merchant, only: [:new, :create]
 
   def new
     @merchant = Merchant.new
@@ -129,7 +129,7 @@ class Users::MerchantsController < ApplicationController
       end
     end
 
-    def have_merchant_account
+    def yes_merchant
       @user = current_user
       if @user.merchant
         @merchant = @user.merchant

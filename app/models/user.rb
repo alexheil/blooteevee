@@ -16,6 +16,11 @@ class User < ApplicationRecord
   has_one :membership
   has_one :merchant
 
+  has_many :active_subscribtions, class_name: "Subscription", foreign_key: "subscriber_id", dependent: :destroy
+  has_many :passive_subscribtions, class_name: "Subscription", foreign_key: "subscribed_id", dependent: :destroy
+  has_many :subscribing, through: :active_subscribtions,  source: :followed
+  has_many :subscribers, through: :passive_subscribtions, source: :follower
+
   before_save :should_generate_new_friendly_id?, if: :username_changed?
   before_save :downcase_username
 
