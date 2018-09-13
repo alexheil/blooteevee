@@ -1,0 +1,4 @@
+<%= form_for(@membership, url: user_memberships_path(@user)) do |f| %>
+<%= f.submit "Update membership", data: { disable_with: 'Updating...' } %>
+      </div>
+<% end %>
