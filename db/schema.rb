@@ -105,8 +105,6 @@ ActiveRecord::Schema.define(version: 20180913182921) do
     t.boolean  "review_email",           default: true
     t.boolean  "comment_email",          default: true
     t.boolean  "message_email",          default: true
-    t.string   "plan_id",                default: ""
-    t.string   "product_id",             default: ""
     t.string   "customer_id",            default: ""
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false

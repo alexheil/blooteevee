@@ -42,8 +42,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.boolean :comment_email, default: true
       t.boolean :message_email, default: true
 
-      t.string :plan_id, default: ""
-      t.string :product_id, default: ""
       t.string :customer_id, default: ""
 
       t.timestamps null: false
