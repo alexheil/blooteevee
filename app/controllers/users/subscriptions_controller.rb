@@ -1,7 +1,6 @@
 class Users::SubscriptionsController < ApplicationController
 
   def create
-
     @subscriber = current_user
     @subscribed = User.friendly.find(params[:subscribed_id])
 
@@ -22,7 +21,7 @@ class Users::SubscriptionsController < ApplicationController
     subscription = Stripe::Subscription.create({
       customer: subscription_customer.id,
       source: token,
-      application_fee_percent: 10,
+      application_fee_percent: 15,
       items: [
         {plan: plan.id}
       ],
@@ -31,28 +30,36 @@ class Users::SubscriptionsController < ApplicationController
     subscription.save
 
     if subscription.save
-      user = User.find(params[:subscribed_id])
       @subscriber.active_subscriptions.create(
         stripe_subscription_id: subscription.id,
         subscriber_id: @subscriber.id,
-        subscribed_id: @subscribed.id
+        subscribed_id: @subscribed.id,
+        amount: @subscribed.plan.amount,
+        currency: @subscribed.plan.currency
       )
-      redirect_to user_path(user)
-      flash[:notice] = "You subscribed to #{user.profile.first_name.presence || user.username}!"
+      redirect_to user_path(@subscribed)
+      flash[:notice] = "You subscribed to #{@subscribed.profile.first_name.presence || @subscribed.username}!"
     else 
       redirect_to root_url
     end
   end
 
   def destroy
+    @subscribed = Subscription.find(params[:id]).subscribed
+    @subscription = Subscription.find(params[:id])
 
+    Stripe.api_key = "sk_test_ECd3gjeIEDsGkySmF8FQOC5i"
 
+    subscription = Stripe::Subscription.retrieve(@subscription.stripe_subscription_id, stripe_account: @subscribed.merchant.stripe_id)
 
-
-
-    user = Subscription.find(params[:id]).subscribed
-    current_user.unsubscribe(user)
-    redirect_to user
+    if subscription.delete
+      current_user.unsubscribe(@subscribed)
+      redirect_to user_path(@subscribed)
+      flash[:notice] = "You unsubscribed from #{@subscribed.profile.first_name.presence || @subscribed.username}."
+    else
+      redirect_to user_path(@subscribed)
+      flash[:alert] = "You did not unsubscribe from #{@subscribed.profile.first_name.presence || @subscribed.username}."
+    end
   end
 
 end

@@ -5,6 +5,8 @@ class CreateSubscriptions < ActiveRecord::Migration[5.0]
       t.integer :subscriber_id
       t.integer :subscribed_id
       t.string :stripe_subscription_id
+      t.decimal :amount, precision: 10, scale: 2
+      t.string :currency
 
       t.timestamps
     end

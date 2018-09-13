@@ -28,4 +28,6 @@
 
 <% @user.active_subscriptions.each do |sub| %>
   <%= sub.stripe_subscription_id %></br>
+  <%= sub.amount %></br>
+  <%= sub.currency %></br>
 <% end %>

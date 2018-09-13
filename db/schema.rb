@@ -78,8 +78,10 @@ ActiveRecord::Schema.define(version: 20180913182921) do
     t.integer  "subscriber_id"
     t.integer  "subscribed_id"
     t.string   "stripe_subscription_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.decimal  "amount",                 precision: 10, scale: 2
+    t.string   "currency"
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
     t.index ["subscribed_id"], name: "index_subscriptions_on_subscribed_id"
     t.index ["subscriber_id", "subscribed_id"], name: "index_subscriptions_on_subscriber_id_and_subscribed_id", unique: true
     t.index ["subscriber_id"], name: "index_subscriptions_on_subscriber_id"
