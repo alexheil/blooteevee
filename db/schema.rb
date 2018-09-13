@@ -10,7 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180911200751) do
+ActiveRecord::Schema.define(version: 20180912213023) do
+
+  create_table "memberships", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "stripe_subscription_id", default: ""
+    t.string   "current_id",             default: ""
+    t.integer  "membership_type",        default: 0
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.index ["stripe_subscription_id"], name: "index_memberships_on_stripe_subscription_id"
+    t.index ["user_id"], name: "index_memberships_on_user_id"
+  end
+
+  create_table "merchants", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "stripe_publishable_key"
+    t.string   "stripe_secret_key"
+    t.string   "stripe_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "currency"
+    t.string   "country"
+    t.integer  "month"
+    t.integer  "day"
+    t.integer  "year"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["user_id"], name: "index_merchants_on_user_id"
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id"

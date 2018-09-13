@@ -9,6 +9,6 @@ class CreateMemberships < ActiveRecord::Migration[5.0]
       t.timestamps
     end
 
-    add_index :members, :stripe_subscription_id
+    add_index :memberships, :stripe_subscription_id
   end
 end
