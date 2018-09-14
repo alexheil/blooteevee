@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20180913182921) do
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id"
+    t.string   "display_name"
     t.string   "first_name"
     t.string   "last_name"
     t.text     "image_data"

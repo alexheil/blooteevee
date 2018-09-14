@@ -13,6 +13,11 @@
           <span id="profile_errors"><%= render 'partials/errors/profile_errors' %></span>
           
           <div class="field">
+            <%= f.label :display_name %>
+            <%= f.text_field :display_name, class: "text-field" %>
+          </div>
+
+          <div class="field">
             <%= f.label :first_name %>
             <%= f.text_field :first_name, class: "text-field" %>
           </div>

@@ -1,4 +1,4 @@
-class Profiles::UsersController < ApplicationController
+class Users::ProfilesController < ApplicationController
 
   before_action :authenticate_user!
   before_action :correct_user
@@ -30,7 +30,7 @@ class Profiles::UsersController < ApplicationController
     end
 
     def profile_params
-      params.require(:profile).permit(:age, :biography, :first_name, :last_name, :website, :city, :state, :country, :twitter_handle, :twitter_url, :youtube_handle, :youtube_url, :snapchat_handle, :snapchat_url, :image, :remove_image)
+      params.require(:profile).permit(:age, :biography, :display_name, :first_name, :last_name, :website, :city, :state, :country, :twitter_handle, :twitter_url, :youtube_handle, :youtube_url, :snapchat_handle, :snapchat_url, :image, :remove_image)
     end
 
 end
