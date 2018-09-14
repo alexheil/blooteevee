@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  if Rails.env.production?
+    mount Shrine.presign_endpoint(:cache) => '/presign'
+  end
   
   root 'static_pages#home'
 
