@@ -13,3 +13,12 @@
     <% end %>
   <% end %>
 </div>
+
+<div>
+  <% Category.all.each do |cat| %>
+    <%= link_to cat.title, category_path(cat) %>
+    <% cat.subcategories.each do |sub| %>
+      <%= link_to sub.title, category_subcategory_path(cate, sub) %>
+    <% end %>
+  <% end %>
+</div>
