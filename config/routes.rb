@@ -24,11 +24,14 @@ Rails.application.routes.draw do
     resource :membership, controller: 'users/memberships', only: [:new, :create, :edit, :update]
     resource :merchant, controller: 'users/merchants', only: [:new, :create, :edit, :update]
     resource :plan, controller: 'users/plans', only: [:new, :create, :edit, :update]
-    # resources :videos, controller: 'instructors/videos', except: :index do
+    resources :videos, controller: 'user/videos', except: :index do
     #   resources :comments, controller: 'instructors/comments', only: [:create, :update, :destroy]
-    # end
+    end
   end
 
   resources :subscriptions, controller: 'users/subscriptions', only: [:create, :destroy]
+  resources :categories, controller: 'categories/categories' do
+    resources :subcategories, controller: 'categories/subcategories', except: :index
+  end
 
 end

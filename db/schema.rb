@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180913182921) do
+ActiveRecord::Schema.define(version: 20180914205609) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "image"
+    t.string   "slug"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "memberships", force: :cascade do |t|
     t.integer  "user_id"
@@ -74,6 +83,17 @@ ActiveRecord::Schema.define(version: 20180913182921) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "subcategories", force: :cascade do |t|
+    t.integer  "category_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "image"
+    t.string   "slug"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_subcategories_on_category_id"
+  end
+
   create_table "subscriptions", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "subscriber_id"
@@ -113,6 +133,18 @@ ActiveRecord::Schema.define(version: 20180913182921) do
     t.datetime "updated_at",                            null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "videos", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "video_data"
+    t.text     "image_data"
+    t.text     "description"
+    t.string   "slug"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_videos_on_user_id"
   end
 
 end

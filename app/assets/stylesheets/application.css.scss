@@ -3,15 +3,15 @@
 *= require_self
 */
 
-$main: #47B975; /* OCEAN GREEN */
-$light: #A4C2A7; /* SPRING RAIN */
-$dark: #C8A223; /* HOKEY POKEY */
+$main: #5f92ff; /* OCEAN GREEN */
+$light: #B6CDFF; /* SPRING RAIN */
+$dark: #B23B59; /* HOKEY POKEY */
 $green: #47B975; /* OCEAN GREEN */
 $border: #BEC8CE; /* LOBLOLLY */
 $red: #F44336; /* POMEGRANATE */
 $yellow: #ff9800; /* PIZAZZ */
-$black: #3f4c47; /* GREEN KELP */
-$white: #FFFFFF; /* FAFAFA DESERT STORM */
+$black: #211725; /* GREEN KELP */
+$white: #F9F7F7; /* FAFAFA DESERT STORM */
 $grey: #EEEEEE; /* GALLERY */
 $fancy: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 
@@ -156,6 +156,14 @@ video {
 
 .padding-left {
   padding-left: 2vh;
+}
+
+.border-top {
+  border-top: 1px solid $border;
+}
+
+.border-bottom {
+  border-bottom: 1px solid $border;
 }
 
 /* ********************** HEADER ***************** */

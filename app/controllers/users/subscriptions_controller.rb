@@ -1,5 +1,7 @@
 class Users::SubscriptionsController < ApplicationController
 
+  before_action :authenticate_user!
+
   def create
     @subscriber = current_user
     @subscribed = User.friendly.find(params[:subscribed_id])
@@ -22,9 +24,9 @@ class Users::SubscriptionsController < ApplicationController
       customer: subscription_customer.id,
       source: token,
       application_fee_percent: 15,
-      items: [
-        {plan: plan.id}
-      ],
+      items: [{
+        plan: plan.id
+      }],
     }, stripe_account: @subscribed.merchant.stripe_id)
 
     subscription.save
