@@ -1,0 +1,20 @@
+<div class="header-container">
+  <div class="padding-horizontal">
+    <nav class="nav padding-vertical border-bottom">
+      <div class="site-title">
+        <%= link_to 'Bloo Tee Vee', root_url %>
+      </div>
+      <ul class="center">
+        <li><%= link_to 'BECOME A MEMBER', become_member_path, class: "nav-links" %></li>
+           | 
+        <% if user_signed_in? %>
+          <li><%= link_to 'YOUR PAGE', user_path(current_user), class: "nav-links" %></li>
+           | <li><%= link_to 'SIGN OUT', sign_out_path, class: "nav-links" %></li>
+        <% else %>
+          <li><%= link_to 'SIGN IN', sign_in_path, class: "nav-links" %></li>
+           | <li><%= link_to 'REGISTER', register_path, class: "nav-links" %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</div>

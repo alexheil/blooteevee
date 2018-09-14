@@ -3,4 +3,286 @@
 *= require_self
 */
 
+$main: #47B975; /* OCEAN GREEN */
+$light: #A4C2A7; /* SPRING RAIN */
+$dark: #C8A223; /* HOKEY POKEY */
+$green: #47B975; /* OCEAN GREEN */
+$border: #BEC8CE; /* LOBLOLLY */
+$red: #F44336; /* POMEGRANATE */
+$yellow: #ff9800; /* PIZAZZ */
+$black: #3f4c47; /* GREEN KELP */
+$white: #FFFFFF; /* FAFAFA DESERT STORM */
+$grey: #EEEEEE; /* GALLERY */
+$fancy: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 
+$radius: 6px;
+$shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.42), 0 3px 20px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+$shadow-lite: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+$letterspacer: .05em;
+
+@mixin transition {
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -o-transition: .3s;
+  &:hover {
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+  }
+}
+
+@mixin textLabels {
+  font-size: .75em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5em;
+  letter-spacing: 0px;
+  font-family: $fancy;
+  font-weight: 400;
+  background: $white;
+  color: $black;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  @include transition;
+  color: $main;
+  text-decoration: none;
+  &:hover {
+    color: $dark;
+  }
+}
+
+::selection {
+  color: $white;
+  background: $main;
+}
+
+::-moz-selection {
+  color: $white;
+  background: $main;
+}
+
+img {
+  border-radius: $radius;
+  display: block;
+}
+
+video {
+  display: block;
+  max-height: 75vh;
+}
+
+/* *************** FLASH ***************** */
+
+.flash {
+  position: fixed;
+  margin: 0 auto;
+  z-index: 1006;
+  width: 60%;
+  top: 0;
+  left: 20%;
+}
+
+.alert-notice {
+  border-bottom: 10px solid $green;
+  background: $white;
+  border-bottom-left-radius: $radius;
+  border-bottom-right-radius: $radius;
+  box-shadow: $shadow-lite;
+}
+
+.alert-alert {
+  border-bottom: 10px solid $red;
+  background: $white;
+  border-bottom-left-radius: $radius;
+  border-bottom-right-radius: $radius;
+  box-shadow: $shadow-lite;
+}
+
+.alert {
+  width: 90%;
+  margin: 0 auto;
+  padding: 1vh 0;
+  font-family: $fancy;
+}
+
+/* ***************** UNIVERSAL ************* */
+
+.wrapper {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.container {
+  width: 96%;
+  margin: 0 auto;
+}
+
+/* **************** HOME *********************** */
+
+
+
+/* *************** SIZES AND SPACE ************** */
+
+.padding-vertical {
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+}
+
+.padding-top {
+  padding-top: 2vh;
+}
+
+.padding-bottom {
+  padding-bottom: 2vh;
+}
+
+.padding-horizontal {
+  padding-right: 2vh;
+  padding-left: 2vh;
+}
+
+.padding-right {
+  padding-right: 2vh;
+}
+
+.padding-left {
+  padding-left: 2vh;
+}
+
+/* ********************** HEADER ***************** */
+
+.header-container {
+  width: 100%;
+  margin: 0 auto;
+  background: transparent;
+  a {
+    color: $black;
+  }
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  .site-title {
+    @include transition;
+    display: inline-block;
+    width: 24%;
+    color: $white;
+    font-weight: 400;
+    letter-spacing: $letterspacer;
+    &:hover {
+      text-decoration: none;
+      color: $light;
+    }
+  }
+  ul {
+    width: 50%;
+    padding: 0;
+    margin: 0;
+    text-align: right;
+    display: inline-block;
+    li {
+      width: 25%;
+      display: inline-block;
+      position: relative;
+      text-align: center;
+    }
+  }
+}
+
+.nav-links {
+  @include transition;
+  cursor: pointer;
+  color: $white;
+  padding: 3vh 1vw;
+  font-weight: 400;
+  letter-spacing: $letterspacer;
+  &:hover {
+    color: $main;
+  }
+}
+
+/* ******************* FOOTER ******************* */
+
+.full-footer-container {
+  width: 100%;
+  clear: both;
+  padding-top: 15vh;
+  background: $white;
+}
+
+.footer {
+  font-size: .75em;
+  text-transform: uppercase;
+  width: 100%;
+  display: inline-block;
+  span {
+    float: left;
+  }
+  .nav-links {
+    @include transition;
+    color: $black;
+    padding: 0;
+    &:hover {
+      @include transition;
+      color: $main;
+    }
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    float: right;
+    li {
+      position: relative;
+      display: inline-block;
+      margin: 0 1vw;
+      &:first-child {
+        margin: 0 1vw 0 0;
+      }
+    }
+  }
+}
+
+.dark-background {
+  background: $black;
+}
+
+.home-footer {
+  font-size: .75em;
+  width: 100%;
+  .nav-links {
+    @include transition;
+    color: $white;
+    padding: 0;
+    &:hover {
+      color: $light;
+    }
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    li {
+      list-style: none;
+      margin: 1vh 0;
+      &:first-child {
+        margin: 0 0 1vh 0;
+      }
+    }
+  }
+}
+
+.footer-disclaimer {
+  font-size: .75em;
+  text-align: center;
+  color: $black;
+  padding-bottom: 2vh;
+}
