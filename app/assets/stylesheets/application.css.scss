@@ -11,7 +11,7 @@ $border: #BEC8CE; /* LOBLOLLY */
 $red: #F44336; /* POMEGRANATE */
 $yellow: #ff9800; /* PIZAZZ */
 $black: #211725; /* GREEN KELP */
-$white: #F9F7F7; /* FAFAFA DESERT STORM */
+$white: #FFFFFF; /* FAFAFA DESERT STORM */
 $grey: #EEEEEE; /* GALLERY */
 $fancy: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 
@@ -92,6 +92,8 @@ video {
 
 .alert-notice {
   border-bottom: 10px solid $green;
+  border-left: 3px solid $green;
+  border-right: 3px solid $green;
   background: $white;
   border-bottom-left-radius: $radius;
   border-bottom-right-radius: $radius;
@@ -99,7 +101,9 @@ video {
 }
 
 .alert-alert {
-  border-bottom: 10px solid $red;
+  border-bottom: 10px solid $dark;
+  border-left: 3px solid $dark;
+  border-right: 3px solid $dark;
   background: $white;
   border-bottom-left-radius: $radius;
   border-bottom-right-radius: $radius;
@@ -107,7 +111,7 @@ video {
 }
 
 .alert {
-  width: 90%;
+  width: 96%;
   margin: 0 auto;
   padding: 1vh 0;
   font-family: $fancy;
@@ -124,6 +128,12 @@ video {
 .container {
   width: 96%;
   margin: 0 auto;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 /* **************** HOME *********************** */
@@ -184,8 +194,8 @@ video {
     @include transition;
     display: inline-block;
     width: 24%;
-    color: $white;
     font-weight: 400;
+    text-transform: uppercase;
     letter-spacing: $letterspacer;
     &:hover {
       text-decoration: none;
@@ -193,7 +203,7 @@ video {
     }
   }
   ul {
-    width: 50%;
+    width: 75%;
     padding: 0;
     margin: 0;
     text-align: right;
@@ -293,4 +303,172 @@ video {
   text-align: center;
   color: $black;
   padding-bottom: 2vh;
+}
+
+/* ****************** FORMS ****************** */
+
+textarea:focus, input:focus {
+  outline: none;
+}
+
+label {
+  @include textLabels;
+  -webkit-font-smoothing: antialiased;
+}
+
+input, textarea {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+}
+
+::placeholder {
+    color: $border;
+  }
+
+.text-label {
+  @include textLabels;
+}
+
+@mixin fields {
+  width: 100%;
+  font-size: 1em;
+  font-weight: 400;
+  border: none;
+  display: inline-block;
+  box-sizing: border-box;
+  border-radius: $radius;
+  font-family: $fancy;
+  letter-spacing: .5px;
+}
+
+.StripeElement {
+  @include fields;
+  padding: 1vh 1vw;
+  background: $grey;
+  display: block;
+}
+
+select {
+  @include fields;
+  text-indent: 1vw;
+  background: $grey;
+  height: 3.75vh;
+  background: url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right $grey;
+  -webkit-appearance: none;
+  background-position-x: 98%;
+}
+
+.text-field {
+  @include fields;
+  padding: 1vh 1vw;
+  background: $grey;
+}
+
+.text-area {
+  @include fields;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 15vh;
+  max-height: 30vh;
+  height: 15vh;
+  padding: 1vh 1vw;
+  background: $grey;
+  display: block;
+}
+
+.field {
+  margin: 0 0 2vh 0;
+}
+
+.field-two-column {
+  margin: 0 0 2vh 0;
+  width: 49%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.field-three-column {
+  margin: 0 0 2vh 0;
+  width: 32%;
+  display: inline-block;
+  vertical-align: top;
+  select { 
+    background-position-x: 94%;
+  }
+}
+
+.padding-field-match {
+  padding: .51vh 1vw;
+}
+
+@mixin buttons {
+  @include transition;
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  font-size: .75em;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: $radius;
+  box-sizing: border-box;
+  font-family: $fancy;
+  text-transform: uppercase;
+  letter-spacing: 0px;
+  color: $white;
+  padding: 1vh 1vw;
+  background: $main;
+  border: 2px solid $main;
+  color: $white;
+  -webkit-font-smoothing: unset;
+  &:hover {
+    box-shadow: $shadow;
+  }
+}
+
+.submit-button {
+  @include buttons;
+}
+
+.search-container {
+  margin: 0 auto;
+  width: 60%;
+}
+
+.search-field {
+  width: 70%;
+  font-size: 1em;
+  padding: 1vh 1vw;
+  font-weight: 400;
+  text-align: right;
+  border: none;
+  background-color: $grey;
+  display: inline-block;
+  box-sizing: border-box;
+  border-top-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+  font-family: $fancy;
+  letter-spacing: 0px;
+}
+
+.search-button {
+  @include transition;
+  width: 30%;
+  font-size: 1em;
+  padding: 1vh 1vw;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: $main;
+  border: none;
+  color: $white;
+  cursor: pointer;
+  display: inline-block;
+  box-sizing: border-box;
+  border-top-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+  font-family: $fancy;
+  letter-spacing: 0px;
+  &:hover {
+    background: $dark;
+  }
 }

@@ -8,6 +8,7 @@ class Users::VideosController < ApplicationController
   def show
     @user = User.friendly.find(params[:user_id])
     @video = Video.friendly.find(params[:id])
+    @comment = Comment.new
   end
 
   def new

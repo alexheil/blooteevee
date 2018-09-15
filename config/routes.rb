@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'terms' => 'static_pages#terms'
   get 'become-member' => 'static_pages#become_member'
 
+  get 'search' => 'users/videos#search'
+
   devise_for :users, controllers: { sessions: "users/sessions", passwords: "users/passwords", registrations: "users/registrations", confirmations: "users/confirmations",  unlocks: "users/unlocks"}
 
   devise_scope :user do
@@ -25,7 +27,7 @@ Rails.application.routes.draw do
     resource :merchant, controller: 'users/merchants', only: [:new, :create, :edit, :update]
     resource :plan, controller: 'users/plans', only: [:new, :create, :edit, :update]
     resources :videos, controller: 'users/videos', except: :index do
-    #   resources :comments, controller: 'instructors/comments', only: [:create, :update, :destroy]
+      resources :comments, controller: 'users/comments', only: [:create, :update, :destroy]
     end
   end
 
