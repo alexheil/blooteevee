@@ -12,15 +12,17 @@ class User < ApplicationRecord
   attr_accessor :login
   attr_accessor :cardholder
 
-  has_one :profile
-  has_one :membership
-  has_one :merchant
-  has_one :plan
+  has_one :profile, dependent: :destroy
+  has_one :membership, dependent: :destroy
+  has_one :merchant, dependent: :destroy
+  has_one :plan, dependent: :destroy
 
   has_many :active_subscriptions, class_name: "Subscription", foreign_key: "subscriber_id", dependent: :destroy
   has_many :passive_subscriptions, class_name: "Subscription", foreign_key: "subscribed_id", dependent: :destroy
   has_many :subscribing, through: :active_subscriptions,  source: :subscribed
   has_many :subscribers, through: :passive_subscriptions, source: :subscriber
+  has_many :videos, dependent: :destroy
+  # has_many :comments, dependent: :destroy
 
   before_save :should_generate_new_friendly_id?, if: :username_changed?
   before_save :downcase_username

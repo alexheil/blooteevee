@@ -6,9 +6,12 @@ class Video < ApplicationRecord
   include ImageUploader[:image]
 
   belongs_to :user
+  belongs_to :category
+  belongs_to :subcategory, optional: true
 
   has_many :comments, dependent: :destroy
 
+  validates :category_id, presence: true
   validates :title, presence: true, length: { maximum: 255 }
   validates :video_data, presence: true, unless: :video_data?
   validates :description, presence: true, length: { maximum: 5000 }

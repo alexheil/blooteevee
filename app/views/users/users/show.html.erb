@@ -14,6 +14,14 @@
   <% end %>
 <% end %>
 
+<% if @user.profile.image_url(:thumb).present? %>
+  <img class="thumbnail-image" src="<%= @user.profile.image_url(:thumb) %>">
+<% end %>
+
+<% @user.videos.each do |vid| %>
+  <%= link_to vid.title, user_video_path(@user, vid) %></br>
+<% end %>
+
 <%= @user.profile.display_name %>
 
 <% @user.subscribers.each do |sub| %>
