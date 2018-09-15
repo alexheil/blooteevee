@@ -4,3 +4,9 @@
 </video>
 
 <img class="thumbnail-image" src="<%= @user.profile.image_url(:thumb) %>">
+
+
+
+<% @video.comments.each do |comment| %>
+  <%= comment.content %></br>
+<% end %>

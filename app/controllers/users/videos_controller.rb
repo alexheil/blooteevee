@@ -47,7 +47,7 @@ class Users::VideosController < ApplicationController
   private
 
     def video_params
-      params.require(:video).permit(:title, :description, :image, :remove_image, :video, :remove_video, :duration)
+      params.require(:video).permit(:subcategory_id, :category_id, :title, :description, :image, :remove_image, :video, :remove_video, :duration)
     end
 
     def set_user
