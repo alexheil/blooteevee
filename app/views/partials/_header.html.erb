@@ -1,4 +1,4 @@
-<div class="header-container">
+<div class="wrapper header-container">
   <div class="container">
     <nav class="nav padding-vertical">
       <div class="site-title">
@@ -11,7 +11,7 @@
           <li><%= link_to 'SIGN IN', sign_in_path, class: "nav-links" %></li>
            | <li><%= link_to 'REGISTER', register_path, class: "nav-links" %></li>
         <% end %>
-        <li><%= link_to 'MENU', become_member_path, class: "nav-links" %></li>
+        <li><span id="menu-click">MENU</span></li>
       </ul>
     </nav>
   </div>
@@ -26,4 +26,23 @@
       </div>
     <% end %>
   </div>
+</div>
+
+<div id="menu-container" class="side-menu">
+  <nav class="padding-horizontal padding-vertical">
+    <ul class="right">
+      <li><%= link_to 'UPLOAD', become_member_path, class: "nav-links" %></li>
+      <li><%= link_to 'SUBSCRIPTIONS', become_member_path, class: "nav-links" %></li>
+      <li><%= link_to 'DISCOVER', become_member_path, class: "nav-links" %></li>
+      <% unless user_signed_in? %>
+        <li><%= link_to 'SIGN IN', sign_in_path, class: "nav-links" %></li>
+         <li><%= link_to 'REGISTER', register_path, class: "nav-links" %></li>
+      <% else %>
+      <li><%= link_to 'PROFILE', edit_user_profile_path(current_user), class: "nav-links" %></li>
+      <li><%= link_to 'SETTINGS', edit_user_registration_path(current_user), class: "nav-links" %></li>
+        <li><%= link_to 'SIGN OUT', sign_out_path, class: "nav-links" %></li>
+      <% end %>
+      
+    </ul>
+  </nav>
 </div>

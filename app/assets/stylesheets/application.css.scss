@@ -136,6 +136,27 @@ video {
   justify-content: space-between;
 }
 
+.blur {
+  -webkit-filter: blur(4px);
+}
+
+.back {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $white;
+  filter: alpha(opacity=80);
+  -moz-opacity: 0.80;
+  -khtml-opacity: 0.80;
+  opacity: 0.80;
+  z-index: 1002;
+  display: none;
+}
+
+
+
 /* **************** HOME *********************** */
 
 
@@ -220,12 +241,58 @@ video {
 .nav-links {
   @include transition;
   cursor: pointer;
-  color: $white;
+  color: $black;
   padding: 3vh 1vw;
   font-weight: 400;
   letter-spacing: $letterspacer;
   &:hover {
     color: $main;
+  }
+}
+
+#menu-click {
+  @include transition;
+  cursor: pointer;
+  color: $black;
+  padding: 3vh 1vw;
+  font-weight: 400;
+  letter-spacing: $letterspacer;
+  &:hover {
+    color: $main;
+  }
+}
+
+#menu-container {
+  display: none;
+  width: 20%;
+  top: 0;
+  right: 0;
+  box-shadow: $shadow;
+}
+
+.side-menu {
+  z-index: 1005;
+  width: 30%;
+  background: white;
+  height: 100%;
+  position: absolute;
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: right;
+    li {
+      padding: 1vh 0;
+      position: relative;
+      text-align: right;
+    }
+  }
+  .nav-links {
+    color: $black;
+    padding: 1vh 0;
+    &:hover {
+      color: $main;
+    }
   }
 }
 
