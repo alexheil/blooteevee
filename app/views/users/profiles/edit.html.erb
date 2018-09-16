@@ -2,13 +2,13 @@
 
 <div class="wrapper">
   <div class="container">
-    <div class="form-container padding-vertical">
+    <div class="form-container padding-vertical-large">
 
-      <div class="padding-bottom center mid-text border-bottom">
+      <div class="mid-text padding-bottom-large center">
         Edit your profile
       </div>
 
-      <div class="padding-top">
+      <div class="padding-bottom">
         <%= form_for(@profile, url: user_profile_path(@user)) do |f| %>
           <span id="profile_errors"><%= render 'partials/errors/profile_errors' %></span>
           
@@ -28,7 +28,7 @@
 
           <% if @profile.image_data? %>
             <div class="field">
-              <img class="thumbnail-image" src="<%= @instructor.profile.image_url(:thumb) %>">
+              <img class="thumbnail-image" src="<%= @user.profile.image_url(:thumb) %>">
             </div>
             <div class="flex border-bottom">
               <div class="field-two-column center">

@@ -2,17 +2,17 @@
 
 <div class="wrapper">
   <div class="container">
-    <div class="form-container padding-vertical">
+    <div class="form-container padding-vertical-large">
 
-      <div class="padding-bottom center mid-text border-bottom">
+      <div class="mid-text padding-bottom-large center">
         Create a plan
       </div>
 
-      <div>
-        You currently do not have a plan. A plan allows users to subscribe to you for a monthly cost. This can be to access premium videos, or simply to support you if all of your videos are free already.
+      <div class="padding-bottom">
+        You currently do not have a plan. A plan allows users to subscribe to you for a monthly cost. This can be to access premium videos, or simply to support you if all of your videos are already free.
       </div>
 
-      <div class="padding-top">
+      <div class="padding-bottom">
         <%= form_for(@plan, url: user_plan_path) do |f| %>
           <div class="field">
             <%= f.label :amount, "Amount per month" %>

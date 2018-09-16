@@ -38,8 +38,19 @@
         <li><%= link_to 'SIGN IN', sign_in_path, class: "nav-links" %></li>
          <li><%= link_to 'REGISTER', register_path, class: "nav-links" %></li>
       <% else %>
-      <li><%= link_to 'PROFILE', edit_user_profile_path(current_user), class: "nav-links" %></li>
-      <li><%= link_to 'SETTINGS', edit_user_registration_path(current_user), class: "nav-links" %></li>
+        <li><%= link_to 'YOUR PAGE', user_path(current_user), class: "nav-links" %></li>
+        <li><%= link_to 'PROFILE', edit_user_profile_path(current_user), class: "nav-links" %></li>
+        <% if current_user.plan.present? %>
+          <li><%= link_to 'PLAN', edit_user_plan_path(current_user), class: "nav-links" %></li>
+        <% else %>
+          <li><%= link_to 'PLAN', new_user_plan_path(current_user), class: "nav-links" %></li>
+        <% end %>
+        <% if current_user.merchant.present? %>
+          <li><%= link_to 'MERCHANT', edit_user_merchant_path(current_user), class: "nav-links" %></li>
+        <% else %>
+          <li><%= link_to 'MERCHANT', new_user_merchant_path(current_user), class: "nav-links" %></li>
+        <% end %>
+        <li><%= link_to 'SETTINGS', edit_user_registration_path(current_user), class: "nav-links" %></li>
         <li><%= link_to 'SIGN OUT', sign_out_path, class: "nav-links" %></li>
       <% end %>
       

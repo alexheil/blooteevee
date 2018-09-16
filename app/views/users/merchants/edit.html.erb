@@ -2,13 +2,13 @@
 
 <div class="wrapper">
   <div class="container">
-    <div class="form-container padding-vertical">
+    <div class="form-container padding-vertical-large">
 
-      <div class="padding-bottom center mid-text border-bottom">
+      <div class="mid-text padding-bottom-large center">
         Set up a merchant account, part 2
       </div>
 
-      <div class="padding-top">
+      <div class="padding-bottom">
         <%= form_for(@merchant, url: user_merchant_path) do |f| %>
           <%= f.hidden_field :user_id %>
           <%= render 'partials/errors/merchant_errors' %>       
@@ -38,7 +38,7 @@
             </div>
 
             <div class="padding-bottom center">
-              None of the information below is saved in Ninth Valley's database. Ninth Valley will not have access to this information after this moment via this website.
+              None of the information below is saved in Bloo TeeVee's database. Bloo TeeVee will not have access to this information after this moment via this website.
             </div>
 
             <% if @merchant.country == 'US' %>
@@ -100,16 +100,16 @@
 
           <% end %>
 
-          <div class="padding-vertical mid-text center border-bottom border-top">
+          <div class="mid-text padding-vertical-large center border-top">
             Where will your money go?
           </div>
 
-          <div class="padding-vertical center">
+          <div class="padding-bottom center">
             <% if @account.external_accounts.any? %>
               You have a bank account on file. Only fill this out if you want to create a new default bank account to transfer funds to. 
             <% else %>
               You do not have a bank account of file. You will not receive any payments until you add a bank account on file. 
-            <% end %>This is not saved to Ninth Valley's database.
+            <% end %>This is not saved to Bloo TeeVee's database.
           </div>
 
           <% if @merchant.country == 'US' %>

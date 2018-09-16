@@ -3,13 +3,13 @@
 
 <div class="wrapper">
   <div class="container">
-    <div class="form-container padding-vertical">
+    <div class="form-container padding-vertical-large">
 
-      <div class="padding-bottom center mid-text border-bottom">
+      <div class="mid-text padding-bottom-large center">
         Add a payment source
       </div>
 
-      <div class="padding-top">
+      <div class="padding-bottom">
         <% if @customer.default_source.present? %>
           You already have a payment source on file. Only fill out this form if you'd like to update your current payment method. Your current card ends in <span class="bold"><%= @card.last4 %></span>.
         <% else %>
@@ -17,8 +17,7 @@
         <% end %>
       </div>
 
-      <div class="padding-top">
-
+      <div class="padding-bottom">
         <%= form_for(@user, url: user_source_path(@user), :html => {:id => "payment-form"}) do |f| %>
           <%= hidden_field_tag :url, params[:url].to_s %>
           <span class="payment-errors"></span>
@@ -44,13 +43,11 @@
             <button type="submit" class="submit-button">Add source</button>
           </div>
         <% end %>
-
-        <div class="padding-top">
-          None of the information above is saved in Ninth Valley's database. Ninth Valley will not have access to this information after this moment via this website.
-        </div>
-
       </div>
 
+      <div class="padding-bottom">
+        None of the information above is saved in Bloo TeeVee's database. Bloo TeeVee will not have access to this information after this moment via this website.
+      </div>
 
     </div>
   </div>
