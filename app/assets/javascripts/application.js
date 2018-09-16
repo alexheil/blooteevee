@@ -350,7 +350,9 @@ var imageLoading = function() {
 
   $(".image-fade-in").fadeIn(500);
   $(".thumbnail-image-home").fadeIn(500);
-  $(".thumbnail-image").fadeIn(500);
+  $(".thumbnail-image-feed-four").fadeIn(1000);
+  $(".thumbnail-image-mini").fadeIn(1000);
+  $(".thumbnail-image").fadeIn(1000);
   $(".tall-thumbnail-image").fadeIn(500);
   $(".video-player").fadeIn(500);
 

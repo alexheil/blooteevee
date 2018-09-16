@@ -2,53 +2,62 @@
 
 <div class="wrapper">
   <div class="container">
-    <div class="padding-vertical-large">
 
-      <div class="flex">
-        <div class="twenty-five">
-          <% if @user.profile.image_url(:thumb).present? %>
-            <img class="thumbnail-image" src="<%= @user.profile.image_url(:thumb) %>">
-          <% end %>
-        </div>
+    <%= render 'users/partials/nameplate' %>
 
-        <div class="seventy-three">
+    <div class="padding-vertical-large border-bottom">
+      <div class="sixty">
+        <video class="video-player" width="100%" height="auto" controls controlslist="nodownload">
+          <source src="<%= @user.videos.first.video_url %>">
+          Your browser does not support this video.
+        </video>
+      </div>
+    </div>
 
-          <div class="padding-bottom">
-            <% if user_signed_in? %>
-              <% if current_user.subscribing?(@user) %>
-                <%= form_for(current_user.active_subscriptions.find_by(subscribed_id: @user.id),
-                         html: { method: :delete }) do |f| %>
-                  <%= f.submit "Unsubscribe", class: "submit-button" %>
-                <% end %>
-              <% else %>
-                <%= form_for(current_user.active_subscriptions.build) do |f| %>
-                  <div><%= hidden_field_tag :subscribed_id, @user.id %></div>
-                  <%= f.submit "Subscribe - #{@user.plan.amount} #{@user.plan.currency} per month", class: "submit-button" %>
-                <% end %>
-              <% end %>
+    <div class="flex padding-vertical-large">
+      <aside class="sidebar">
+        <ul>
+          <li class="active-sidebar-tab">Videos</li>
+          <li class="inactive-sidebar-tab">Description</li>
+        </ul>
+      </aside>
+
+      <main class="content">
+        <% if @user.videos.any? %>
+          <div class="flex">
+            <% @user.videos.each do |video| %>
+              <div class="twenty-four border">
+
+                <img class="thumbnail-image-feed-four" src="<%= video.image_url(:thumb) %>">
+
+                <div class="padding-horizontal-mini">
+                  <div class="padding-vertical-mini">
+                    
+                    <div class="padding-bottom-mini">
+                      <%= link_to video.title, user_video_path(@user, video) %>
+                    </div>
+
+                    <div class="mini-text">
+                      <div class="flex">
+                        <div class="forty-eight">
+                          <%= @user.profile.display_name.presence || @user.username %>
+                        </div>
+                        <div class="forty-eight right">
+                          <%= remove_unwanted_words time_ago_in_words(video.created_at) %> ago
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
             <% end %>
           </div>
-
-          <div class="mid-text padding-bottom">
-            <%= @user.profile.display_name.presence || @user.username %>
-          </div>
-
-          <div class="padding-bottom">
-            <%= @user.membership.membership_type.capitalize if @user.membership.membership_type %> | <%= pluralize(@user.videos.count, "Video") %> | <%= pluralize(@user.passive_subscriptions.count, "Subscriber") %>
-          </div>
-
-          <div class="padding-bottom">
-            <%= @user.profile.city if @user.profile.city.present? %><%= ", " if @user.profile.city.present? && (@user.profile.state.present? || @user.profile.country.present?) %><%= @user.profile.state if @user.profile.state.present? %><%= ", " if @user.profile.state.present? && @user.profile.country.present? %><%= @user.profile.country if @user.profile.country.present? %> 
-
-            <%= "|" if (@user.profile.city.present? || @user.profile.state.present? || @user.profile.country.present?) && (@user.profile.website.present? || @user.profile.twitter_url.present? || @user.profile.snapchat_url.present?) %> <%= link_to "Website", @user.profile.website, target: :_blank if @user.profile.website.present? %> <%= "|" if @user.profile.website.present? && (@user.profile.twitter_url.present? || @user.profile.snapchat_url.present?) %> <%= link_to "Twitter", @user.profile.twitter_url, target: :_blank, class: "profile-twitter" if @user.profile.twitter_url.present? %> <%= "|" if @user.profile.twitter_url.present? && @user.profile.snapchat_url.present? %> <%= link_to "Snapchat", @user.profile.snapchat_url, target: :_blank, class: "profile-snapchat" if @user.profile.snapchat_url.present? %>
-          </div>
-          <div class="padding-bottom">
-            <%= @user.profile.biography %>
-          </div>
-
-        </div>
-      </div>
-
+        <% else %>
+          There are no videos... yet. <%= link_to "Add one?", new_user_video_path(current_user) if @user == current_user %>
+        <% end %>
+      </main>
     </div>
+
   </div>
 </div>

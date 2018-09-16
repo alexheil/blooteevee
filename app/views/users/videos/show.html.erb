@@ -3,7 +3,7 @@
   Your browser does not support this video.
 </video>
 
-<img class="thumbnail-image" src="<%= @user.profile.image_url(:thumb) %>">
+<img class="thumbnail-image" src="<%= @video.image_url(:thumb) %>">
 
 <%= form_for(@comment, url: user_video_comments_path(@user, @video)) do |f| %>
   <div class="field">
