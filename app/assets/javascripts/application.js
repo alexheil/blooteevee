@@ -358,3 +358,31 @@ var imageLoading = function() {
 
 $(document).ready(imageLoading);
 $(document).on('turbolinks:load', imageLoading);
+
+var freePremium = function() {
+
+  if ($('#premium').prop('checked')) {
+    $('#free-tab').addClass("unchecked-tab");
+    $('#free-tab').removeClass("checked-tab");
+    $('#premium-tab').addClass("checked-tab");
+    $('#premium-tab').removeClass("unchecked-tab");
+  };
+
+  $('#free').click(function() {
+    $('#free-tab').removeClass("inactive-paid-tab");
+    $('#free-tab').addClass("active-paid-tab");
+    $('#premium-tab').removeClass("active-paid-tab");
+    $('#premium-tab').addClass("inactive-paid-tab");
+  });
+
+  $('#premium').click(function() {
+    $('#free-tab').addClass("inactive-paid-tab");
+    $('#free-tab').removeClass("active-paid-tab");
+    $('#premium-tab').addClass("active-paid-tab");
+    $('#premium-tab').removeClass("inactive-paid-tab");
+  });
+
+};
+
+$(document).ready(freePremium);
+$(document).on('turbolinks:load', freePremium);

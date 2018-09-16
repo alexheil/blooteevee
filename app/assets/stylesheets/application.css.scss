@@ -160,6 +160,20 @@ a {
   text-align: center;
 }
 
+.profile-twitter {
+  color: #55acee;
+  &:hover {
+    color: $main;
+  }
+}
+
+.profile-snapchat {
+  color: #bb0000;
+  &:hover {
+    color: $main;
+  }
+}
+
 /* **************** IMAGES AND VIDEO *********************** */
 
 img {
@@ -236,6 +250,20 @@ video {
 
 .border-bottom {
   border-bottom: 1px solid $border;
+}
+
+.twenty-five {
+  margin: 0;
+  width: 25%;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.seventy-three {
+  margin: 0;
+  width: 73%;
+  display: inline-block;
+  vertical-align: bottom;
 }
 
 /* ********************** HEADER ***************** */

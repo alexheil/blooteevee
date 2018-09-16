@@ -8,6 +8,7 @@ class CreateVideos < ActiveRecord::Migration[5.0]
       t.text :video_data
       t.text :image_data
       t.text :description
+      t.integer :policy_type, default: 0
       t.string :slug
 
       t.timestamps

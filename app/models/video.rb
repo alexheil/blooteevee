@@ -5,6 +5,8 @@ class Video < ApplicationRecord
   include VideoUploader[:video]
   include ImageUploader[:image]
 
+  enum policy_type: [:free, :premium]
+
   default_scope -> { order('id DESC') }
 
   belongs_to :user

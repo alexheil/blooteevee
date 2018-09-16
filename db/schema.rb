@@ -153,9 +153,10 @@ ActiveRecord::Schema.define(version: 20180915012247) do
     t.text     "video_data"
     t.text     "image_data"
     t.text     "description"
+    t.integer  "policy_type",    default: 0
     t.string   "slug"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["category_id"], name: "index_videos_on_category_id"
     t.index ["subcategory_id"], name: "index_videos_on_subcategory_id"
     t.index ["user_id"], name: "index_videos_on_user_id"
