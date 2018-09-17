@@ -1,0 +1,27 @@
+<%= provide(:title, sanitize(@user.profile.display_name.presence || @user.username)) %>
+
+<div class="wrapper">
+  <div class="container">
+
+    <%= render 'users/partials/nameplate' %>
+
+    <div class="flex padding-vertical-large">
+      <aside class="sidebar">
+        <ul>
+          <li class="inactive-sidebar-tab"><%= link_to "Videos", user_path(@user) %></li>
+          <li class="active-sidebar-tab"><%= link_to "Description", user_about_path(@user) %></li>
+        </ul>
+      </aside>
+
+      <main class="content">
+        <div class="padding-bottom best">
+          <%= sanitize(@user.profile.biography) %>
+        </div>
+        <div class="padding-bottom best">
+          <span class="bold">USER SINCE:</span> <%= @user.created_at.strftime("%m.%d.%Y") %>
+        </div>
+      </main>
+    </div>
+
+  </div>
+</div>

@@ -139,6 +139,10 @@ a {
   display: inline-block;
 }
 
+.bold {
+  font-weight: 700;
+}
+
 .dark {
   color: $border;
 }
@@ -204,6 +208,12 @@ img {
 video {
   display: block;
   max-height: 75vh;
+}
+
+.video-player {
+  border: 1px solid $border;
+  border-radius: $radius;
+  display: none;
 }
 
 .thumbnail-image {
@@ -330,6 +340,9 @@ video {
     li {
       margin-bottom: 2vh;
       position: relative;
+      a {
+        color: black;
+      }
     }
   }
 }
@@ -387,6 +400,12 @@ video {
   width: 83%;
   display: inline-block;
   vertical-align: bottom;
+}
+
+.best {
+  word-break: break-word;
+  white-space: pre-line;
+  margin-top: -25px;
 }
 
 /* ********************** HEADER ***************** */
@@ -785,11 +804,15 @@ select {
 }
 
 .inactive-sidebar-tab {
+  @include transition;
   border-left: 3px solid $border;
   text-transform: uppercase;
   text-align: left;
   padding-left: 2vw;
   cursor: pointer;
+  &:hover {
+    border-left: 3px solid $dark;
+  }
 }
 
 .active-paid-tab {

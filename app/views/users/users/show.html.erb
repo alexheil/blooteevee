@@ -11,8 +11,8 @@
           <source src="<%= @user.videos.first.video_url %>">
           Your browser does not support this video.
         </video>
-        <div class="padding-top">
-          <%= @user.videos.first.title %>
+        <div class="padding-top mid-text">
+          <%= link_to @user.videos.first.title, user_video_path(@user, @user.videos.first) %>
         </div>
       </div>
     </div>
@@ -20,8 +20,8 @@
     <div class="flex padding-vertical-large">
       <aside class="sidebar">
         <ul>
-          <li class="active-sidebar-tab">Videos</li>
-          <li class="inactive-sidebar-tab">Description</li>
+          <li class="active-sidebar-tab"><%= link_to "Videos", user_path(@user) %></li>
+          <li class="inactive-sidebar-tab"><%= link_to "Description", user_about_path(@user) %></li>
         </ul>
       </aside>
 

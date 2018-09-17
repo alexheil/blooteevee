@@ -6,5 +6,9 @@ class Users::UsersController < ApplicationController
       @subscription = Subscription.new
     end
   end
+
+  def about
+    @user = User.friendly.find(params[:user_id])
+  end
   
 end

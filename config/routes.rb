@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     resources :videos, controller: 'users/videos', except: :index do
       resources :comments, controller: 'users/comments', only: [:create, :update, :destroy]
     end
+    get 'about' => 'users/users#about'
   end
 
   resources :subscriptions, controller: 'users/subscriptions', only: [:create, :destroy]
