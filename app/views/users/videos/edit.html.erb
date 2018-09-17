@@ -66,6 +66,17 @@
             <%= f.text_area :description, class: "text-area" %>
           </div>
 
+          <div class="flex">
+            <div class="field-two-column">
+              <label class="active-paid-tab" id="free-tab" for="free">Free</label>
+              <span class="hidden"><%= f.radio_button(:policy_type, "free", id: "free") %></span>
+            </div>
+            <div class="field-two-column">
+              <label class="inactive-paid-tab" id="premium-tab" for="premium">Premium</label>
+              <span class="hidden"><%= f.radio_button(:policy_type, "premium", id: "premium") %></span>
+            </div>
+          </div>
+
           <%= f.submit "Edit video", data: { disable_with: 'Updating...' }, class: "submit-button" %>
         <% end %>
       </div>

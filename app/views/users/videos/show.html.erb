@@ -1,9 +1,38 @@
-<video class="video-player" width="100%" height="auto" controls controlslist="nodownload">
-  <source src="<%= @video.video_url %>">
-  Your browser does not support this video.
-</video>
+<%= provide(:title, sanitize(@user.profile.display_name.presence || @user.username)) %>
 
-<img class="thumbnail-image" src="<%= @video.image_url(:thumb) %>">
+<div class="wrapper">
+  <div class="container">
+
+    <div class="padding-vertical-large border-bottom">
+
+      <% if @video.free? %>
+        <div class="flex">
+          <div class="eighty-three">
+            <video class="video-player" width="100%" height="auto" controls controlslist="nodownload">
+              <source src="<%= @video.video_url %>">
+              Your browser does not support this video.
+            </video>
+          </div>
+
+          <div class="fifteen">
+            <div class="padding-horizontal border-left">
+              <div class="blackbox">
+                THIS IS WHERE THE AD WILL GO IF VIDEO FREE
+              </div>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <video class="video-player" width="100%" height="auto" controls controlslist="nodownload">
+          <source src="<%= @video.video_url %>">
+          Your browser does not support this video.
+        </video>
+      <% end %>
+
+    </div>
+
+  </div>
+</div>
 
 <%= form_for(@comment, url: user_video_comments_path(@user, @video)) do |f| %>
   <div class="field">

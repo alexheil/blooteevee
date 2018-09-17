@@ -348,13 +348,10 @@ $(document).on('turbolinks:load', editProfile);
 
 var imageLoading = function() {
 
-  $(".image-fade-in").fadeIn(500);
-  $(".thumbnail-image-home").fadeIn(500);
   $(".thumbnail-image-feed-four").fadeIn(1000);
   $(".thumbnail-image-mini").fadeIn(1000);
   $(".thumbnail-image").fadeIn(1000);
-  $(".tall-thumbnail-image").fadeIn(500);
-  $(".video-player").fadeIn(500);
+  $(".video-player").fadeIn(1000);
 
 };
 
@@ -364,10 +361,10 @@ $(document).on('turbolinks:load', imageLoading);
 var freePremium = function() {
 
   if ($('#premium').prop('checked')) {
-    $('#free-tab').addClass("unchecked-tab");
-    $('#free-tab').removeClass("checked-tab");
-    $('#premium-tab').addClass("checked-tab");
-    $('#premium-tab').removeClass("unchecked-tab");
+    $('#free-tab').addClass("inactive-paid-tab");
+    $('#free-tab').removeClass("active-paid-tab");
+    $('#premium-tab').addClass("active-paid-tab");
+    $('#premium-tab').removeClass("inactive-paid-tab");
   };
 
   $('#free').click(function() {
