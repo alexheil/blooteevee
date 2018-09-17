@@ -54,6 +54,7 @@
             <% end %>
           </div>
         <% else %>
+        
           There are no videos... yet. <%= link_to "Add one?", new_user_video_path(current_user) if @user == current_user %>
         <% end %>
       </main>
