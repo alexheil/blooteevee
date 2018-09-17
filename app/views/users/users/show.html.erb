@@ -11,6 +11,9 @@
           <source src="<%= @user.videos.first.video_url %>">
           Your browser does not support this video.
         </video>
+        <div class="padding-top">
+          <%= @user.videos.first.title %>
+        </div>
       </div>
     </div>
 
@@ -54,7 +57,6 @@
             <% end %>
           </div>
         <% else %>
-        
           There are no videos... yet. <%= link_to "Add one?", new_user_video_path(current_user) if @user == current_user %>
         <% end %>
       </main>
