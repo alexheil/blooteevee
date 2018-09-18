@@ -56,15 +56,34 @@ var getFilename = function() {
 $(document).ready(getFilename);
 $(document).on('turbolinks:load', getFilename);
 
+var videoClick = function() {
+
+  $('#expand-description').click(function() {
+    $('#description-container').fadeIn(300);
+    $('.back').fadeIn(300);
+    $(".wrapper").addClass("blur");
+  });
+
+  $('.back').click(function() {
+    $('#description-container').fadeOut(300);
+    $('.back').fadeOut(300);
+    $(".wrapper").removeClass("blur");
+  });
+
+};
+
+$(document).ready(videoClick);
+$(document).on('turbolinks:load', videoClick);
+
 var sidebarTabs = function() {
 
   $('#first-tab-click').click(function() {
     $('#first-tab').fadeIn(300);
-    $('#first-tab-click').addClass('active-sidebar-tab');
-    $('#first-tab-click').removeClass('inactive-sidebar-tab');
+    $('#first-tab-click').parent().addClass('active-sidebar-tab');
+    $('#first-tab-click').parent().removeClass('inactive-sidebar-tab');
     $('#second-tab').hide();
-    $('#second-tab-click').addClass('inactive-sidebar-tab');
-    $('#second-tab-click').removeClass('active-sidebar-tab');
+    $('#second-tab-click').parent().addClass('inactive-sidebar-tab');
+    $('#second-tab-click').parent().removeClass('active-sidebar-tab');
     $('#third-tab').hide();
     $('#third-tab-click').addClass('inactive-sidebar-tab');
     $('#third-tab-click').removeClass('active-sidebar-tab');
@@ -84,11 +103,11 @@ var sidebarTabs = function() {
 
   $('#second-tab-click').click(function() {
     $('#second-tab').fadeIn(300);
-    $('#second-tab-click').addClass('active-sidebar-tab');
-    $('#second-tab-click').removeClass('inactive-sidebar-tab');
+    $('#second-tab-click').parent().addClass('active-sidebar-tab');
+    $('#second-tab-click').parent().removeClass('inactive-sidebar-tab');
     $('#first-tab').hide();
-    $('#first-tab-click').addClass('inactive-sidebar-tab');
-    $('#first-tab-click').removeClass('active-sidebar-tab');
+    $('#first-tab-click').parent().addClass('inactive-sidebar-tab');
+    $('#first-tab-click').parent().removeClass('active-sidebar-tab');
     $('#third-tab').hide();
     $('#third-tab-click').addClass('inactive-sidebar-tab');
     $('#third-tab-click').removeClass('active-sidebar-tab');

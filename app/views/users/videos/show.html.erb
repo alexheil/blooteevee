@@ -14,11 +14,9 @@
             </video>
           </div>
 
-          <div class="fifteen">
-            <div class="padding-horizontal border-left">
-              <div class="blackbox">
-                THIS IS WHERE THE AD WILL GO IF VIDEO FREE
-              </div>
+          <div class="thirteen">
+            <div class="blackbox">
+              AD
             </div>
           </div>
         </div>
@@ -33,15 +31,27 @@
 
     <div class="flex padding-vertical-large border-bottom">
       <div class="eighty-three">
-        <%= @video.title %>
+        <div class="mid-text padding-bottom-mini">
+          <%= @video.title %>
+        </div>
+        <div class="mini-text padding-bottom-mini">
+          <%= link_to @user.profile.display_name.presence || @user.username, user_path(@user) %> posted <%= remove_unwanted_words time_ago_in_words(@video.created_at) %> ago (<%= @video.created_at.strftime("%m.%d.%Y") %>)
+        </div>
+        <div>
+          <%= truncate(@video.description, length: 140) %>
+          <span id="expand-description">
+            expand
+          </span>
+        </div>
+
       </div>
 
-      <div class="fifteen">
-        <div class="padding-horizontal border-left">
-          76,654 views.
-          <div class="fake-button">
-            Share
-          </div>
+      <div class="thirteen">
+        <div class="padding-bottom-mini">
+          76,654 views
+        </div>
+        <div class="fake-button-dark">
+          Share
         </div>
       </div>
     </div>
@@ -49,60 +59,95 @@
     <div class="flex padding-vertical-large">
       <aside class="sidebar">
         <ul>
-          <li class="active-sidebar-tab"><%= link_to "Videos", user_path(@user) %></li>
-          <li class="inactive-sidebar-tab"><%= link_to "Description", user_about_path(@user) %></li>
+          <li class="active-sidebar-tab"><span id="first-tab-click">Comments</span></li>
+          <li class="inactive-sidebar-tab"><span id="second-tab-click">More videos</span></li>
         </ul>
       </aside>
 
       <main class="content">
-        <% if @user.videos.any? %>
-          <div class="flex">
-            <% @user.videos.each do |video| %>
-              <div class="twenty-four border">
-
-                <img class="thumbnail-image-feed-four" src="<%= video.image_url(:thumb) %>">
-
-                <div class="padding-horizontal-mini">
-                  <div class="padding-vertical-mini">
-                    
-                    <div class="padding-bottom-mini">
-                      <%= link_to video.title, user_video_path(@user, video) %>
-                    </div>
-
-                    <div class="mini-text">
-                      <div class="flex">
-                        <div class="forty-eight">
-                          <%= @user.profile.display_name.presence || @user.username %>
-                        </div>
-                        <div class="forty-eight right">
-                          <%= remove_unwanted_words time_ago_in_words(video.created_at) %> ago
-                        </div>
-                      </div>
-                    </div>
-
+        <div id="first-tab">
+          <div class="padding-bottom-large">
+            <% if user_signed_in? %>
+              <% if current_user.subscribing?(@user) || current_user == @user %>
+                <%= form_for(@comment, url: user_video_comments_path(@user, @video)) do |f| %>
+                  <div class="field">
+                    <%= f.label :content, "Leave a comment" %> <span class="mini-text dark">(Posting as <%= current_user.profile.display_name.presence || current_user.username %>)</span>
+                    <%= f.text_area :content, class: "text-area" %>
                   </div>
-                </div>
+                  <%= f.submit "Create comment", data: { disable_with: 'Creating...' }, class: "submit-button" %>
+                <% end %>
+              <% else %>
+                You must be subscribed to <%= @user.profile.display_name.presence || @user.username %> to leave a comment on this video.
+              <% end %>
+            <% else %>
+              You need to <%= link_to "register", register_path %> or <%= link_to "sign in", sign_in_path %> to comment on <%= @user.profile.display_name.presence || @user.username %>'s video.
+            <% end %>
+          </div>
+
+
+          <div class="padding-bottom">
+            <% @video.comments.each do |comment| %>
+              <div class="mini-text">
+                <%= link_to comment.user.profile.display_name.presence || comment.user.username %> <span class="dark">posted <%= time_ago_in_words(comment.created_at) %></span>
+              </div>
+              <div class="padding-bottom">
+                <%= comment.content %>
               </div>
             <% end %>
           </div>
-        <% else %>
-          There are no videos... yet. <%= link_to "Add one?", new_user_video_path(current_user) if @user == current_user %>
-        <% end %>
+        </div>
+
+        <div id="second-tab">
+          <div class="padding-bottom">
+
+
+            <% if @user.videos.any? %>
+              <div class="flex">
+                <% @user.videos.each do |video| %>
+                  <div class="twenty-four border">
+
+                    <img class="thumbnail-image-feed-four" src="<%= video.image_url(:thumb) %>">
+
+                    <div class="padding-horizontal-mini">
+                      <div class="padding-vertical-mini">
+                        
+                        <div class="padding-bottom-mini">
+                          <%= link_to video.title, user_video_path(@user, video) %>
+                        </div>
+
+                        <div class="mini-text">
+                          <div class="flex">
+                            <div class="forty-eight">
+                              <%= @user.profile.display_name.presence || @user.username %>
+                            </div>
+                            <div class="forty-eight right">
+                              <%= remove_unwanted_words time_ago_in_words(video.created_at) %> ago
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            <% else %>
+              There are no videos... yet. <%= link_to "Add one?", new_user_video_path(current_user) if @user == current_user %>
+            <% end %>
+
+
+          </div>
+        </div>
       </main>
     </div>
 
   </div>
 </div>
 
-<%= form_for(@comment, url: user_video_comments_path(@user, @video)) do |f| %>
-  <div class="field">
-    <%= f.label :content %>
-    <%= f.text_area :content, class: "text-area" %>
+<div id="description-container">
+  <div class="popup-form-inside">
+    <div class="best">
+      <%= @video.description %>
+    </div>
   </div>
-
-  <%= f.submit "Create comment", data: { disable_with: 'Creating...' }, class: "submit-button" %>
-<% end %>
-
-<% @video.comments.each do |comment| %>
-  <%= comment.content %></br>
-<% end %>
+</div>
