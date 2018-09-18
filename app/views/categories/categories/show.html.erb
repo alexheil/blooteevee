@@ -1,0 +1,57 @@
+<%= provide(:title, sanitize(@category.title)) %>
+
+<div class="wrapper">
+  <div class="container">
+    <div class="padding-vertical-large">
+
+      
+      
+       <div class="flex padding-vertical-large">
+        <aside class="sidebar">
+          <ul>
+            <% @subcategories.each do |subcategory| %>
+              <li class="inactive-sidebar-tab"><%= link_to subcategory.title, category_subcategory_path(@category, subcategory) %></li>
+            <% end %>
+          </ul>
+        </aside>
+
+        <main class="content">
+          <% if @videos.any? %>
+            <div class="flex">
+              <% @videos.each do |video| %>
+                <div class="twenty-four border">
+
+                  <img class="thumbnail-image-feed-four" src="<%= video.image_url(:thumb) %>">
+
+                  <div class="padding-horizontal-mini">
+                    <div class="padding-vertical-mini">
+                      
+                      <div class="padding-bottom-mini">
+                        <%= link_to video.title, user_video_path(video.user, video) %>
+                      </div>
+
+                      <div class="mini-text">
+                        <div class="flex">
+                          <div class="forty-eight">
+                            <%= video.user.profile.display_name.presence || video.user.username %>
+                          </div>
+                          <div class="forty-eight right">
+                            <%= remove_unwanted_words time_ago_in_words(video.created_at) %> ago
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% else %>
+            There are no videos... yet.
+          <% end %>
+        </main>
+      </div>
+
+    </div>
+  </div>
+</div>

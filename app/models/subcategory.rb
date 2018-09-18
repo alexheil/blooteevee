@@ -2,6 +2,8 @@ class Subcategory < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
 
+  default_scope -> { order('subcategories.title ASC') }
+
   belongs_to :category
   
   has_many :videos

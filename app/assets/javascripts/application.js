@@ -367,10 +367,12 @@ $(document).on('turbolinks:load', editProfile);
 
 var imageLoading = function() {
 
-  $(".thumbnail-image-feed-four").fadeIn(1000);
-  $(".thumbnail-image-mini").fadeIn(1000);
-  $(".thumbnail-image").fadeIn(1000);
-  $(".video-player").fadeIn(1000);
+  $('.thumbnail-image-feed-four').fadeIn(1000);
+  $('.thumbnail-image-mini').fadeIn(1000);
+  $('.thumbnail-image').fadeIn(1000);
+  $('.video-player').fadeIn(1000);
+  $('.thumbnail-image-category').fadeIn(1000);
+  $('.category-image-container').fadeIn(1000);
 
 };
 

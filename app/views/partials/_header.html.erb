@@ -33,7 +33,7 @@
     <ul class="right">
       <li><%= link_to 'UPLOAD', become_member_path, class: "nav-links" %></li>
       <li><%= link_to 'SUBSCRIPTIONS', become_member_path, class: "nav-links" %></li>
-      <li><%= link_to 'DISCOVER', become_member_path, class: "nav-links" %></li>
+      <li><%= link_to 'DISCOVER', categories_path, class: "nav-links" %></li>
       <% unless user_signed_in? %>
         <li><%= link_to 'SIGN IN', sign_in_path, class: "nav-links" %></li>
          <li><%= link_to 'REGISTER', register_path, class: "nav-links" %></li>
