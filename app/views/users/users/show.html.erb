@@ -1,5 +1,7 @@
 <%= provide(:title, sanitize(@user.profile.display_name.presence || @user.username)) %>
 
+<%= render 'users/partials/user_twitter_cards' %>
+
 <div class="wrapper">
   <div class="container">
 

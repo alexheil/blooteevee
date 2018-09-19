@@ -64,6 +64,10 @@ var videoClick = function() {
     $(".wrapper").addClass("blur");
   });
 
+  $('#share-button-click').click(function() {
+    $('#share-container').fadeIn(300);
+  });
+
   $('.back').click(function() {
     $('#description-container').fadeOut(300);
     $('.back').fadeOut(300);

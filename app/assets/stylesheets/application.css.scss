@@ -349,6 +349,10 @@ video {
   padding-bottom: 2vh;
 }
 
+.padding-top-mini {
+  padding-top: 1vh;
+}
+
 .padding-top {
   padding-top: 2vh;
 }
@@ -437,6 +441,13 @@ video {
   width: 13%;
   padding-left: 2%;
   border-left: 1px solid $border;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.sixteen {
+  margin: 0;
+  width: 16%;
   display: inline-block;
   vertical-align: bottom;
 }
@@ -850,6 +861,54 @@ select {
   padding: .51vh .51vw;
 }
 
+.facebook-button {
+  @include buttons;
+  padding: .51vh .51vw;
+  background: #3b5998;
+  border: 2px solid #3b5998;
+  color: $white;
+}
+
+.twitter-button {
+  @include buttons;
+  padding: .51vh .51vw;
+  background: #55acee;
+  border: 2px solid #55acee;
+  color: $white;
+}
+
+.tumblr-button {
+  @include buttons;
+  padding: .51vh .51vw;
+  background: #36465d;
+  border: 2px solid #36465d;
+  color: $white;
+}
+
+.reddit-button {
+  @include buttons;
+  padding: .51vh .51vw;
+  background: #ff4500;
+  border: 2px solid #ff4500;
+  color: $white;
+}
+
+.email-button {
+  @include buttons;
+  padding: .51vh .51vw;
+  background: $border;
+  border: 2px solid $border;
+  color: $white;
+}
+
+.copy-button {
+  @include buttons;
+  padding: .51vh .51vw;
+  background: $border;
+  border: 2px solid $border;
+  color: $white;
+}
+
 .fake-button-dark {
   @include buttons;
   padding: .51vh .51vw;
@@ -1056,6 +1115,16 @@ select {
 
 #description-container {
   @include javaScriptForms;
+}
+
+#share-container {
+  display: none;
+  a {
+    color: $white;
+    &:hover {
+      color: $white;
+    }
+  }
 }
 
 #second-tab {
