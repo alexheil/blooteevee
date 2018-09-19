@@ -108,24 +108,20 @@
 
                     <img class="thumbnail-image-feed-four" src="<%= video.image_url(:thumb) %>">
 
-                    <div class="padding-horizontal-mini">
-                      <div class="padding-vertical-mini">
-                        
-                        <div class="padding-bottom-mini">
-                          <%= link_to video.title, user_video_path(@user, video) %>
-                        </div>
+                    <div class="padding-horizontal-mini padding-vertical-mini border-top">
+                      <div class="video-title">
+                        <%= link_to video.title, user_video_path(@user, video) %>
+                      </div>
 
-                        <div class="mini-text">
-                          <div class="flex">
-                            <div class="forty-eight">
-                              <%= @user.profile.display_name.presence || @user.username %>
-                            </div>
-                            <div class="forty-eight right">
-                              <%= remove_unwanted_words time_ago_in_words(video.created_at) %> ago
-                            </div>
+                      <div class="mini-text">
+                        <div class="flex">
+                          <div class="forty-eight">
+                            <%= @user.profile.display_name.presence || @user.username %>
+                          </div>
+                          <div class="forty-eight right">
+                            <%= remove_unwanted_words time_ago_in_words(video.created_at) %> ago
                           </div>
                         </div>
-
                       </div>
                     </div>
                   </div>

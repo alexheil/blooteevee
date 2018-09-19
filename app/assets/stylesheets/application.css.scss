@@ -157,6 +157,13 @@ a {
   }
 }
 
+.black-link {
+  color: $black;
+  &:hover {
+    color: $border;
+  }
+}
+
 .dark {
   color: $border;
 }
@@ -237,6 +244,12 @@ video {
   border-radius: $radius;
   display: none;
   background: $black;
+}
+
+.video-title {
+  min-height: 5vh;
+  max-height: 5vh;
+  overflow: hidden;
 }
 
 .thumbnail-image {
@@ -1057,6 +1070,14 @@ select {
     width: 80%;
   }
 
+  .mid-container {
+    width: 100%;
+  }
+
+  .twenty-four {
+    width: 32%;
+  }
+
   .thirty-two {
     width: 49%;
   }
@@ -1135,7 +1156,7 @@ select {
       list-style: none;
       padding: 0;
       margin: 0;
-      text-align: right;
+      text-align: center;
       li {
         margin-bottom: 2vh;
         position: relative;
@@ -1159,6 +1180,8 @@ select {
     border-bottom: 3px solid $main;
     text-align: center;
     padding-left: 0;
+    margin-left: 1vw;
+    margin-right: 1vw;
     padding-bottom: 2vh;
   }
 
@@ -1168,11 +1191,19 @@ select {
     border-bottom: 3px solid $border;
     text-align: center;
     padding-left: 0;
+    margin-left: 1vw;
+    margin-right: 1vw;
     padding-bottom: 2vh;
     &:hover {
       border-left: 0;
       border-bottom: 3px solid $dark;
     }
+  }
+
+  .video-title {
+    min-height: 7vh;
+    max-height: 7vh;
+    overflow: hidden;
   }
 
   @mixin javaScriptForms {
