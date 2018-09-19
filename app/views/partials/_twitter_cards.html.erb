@@ -1,0 +1,23 @@
+<% if content_for?(:user_og_header) %>
+  <%= yield(:user_og_header) %>
+<% elsif content_for?(:video_og_header) %>
+  <%= yield(:video_og_header) %>
+<% elsif content_for?(:course_og_header) %>
+  <%= yield(:course_og_header) %>
+<% elsif content_for?(:student_og_header) %>
+  <%= yield(:student_og_header) %>
+<% elsif content_for?(:blog_og_header) %>
+  <%= yield(:blog_og_header) %>
+<% else %>
+  <meta property="og:url" content="http://www.blooteevee.com" />
+  <meta property="og:title" content="Bloo TeeVee" />
+  <meta property="og:description" content="Bloo TeeVee" />
+  <meta property="og:image" content="https://i.imgur.com/fRcWyIZ.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Bloo TeeVee" />
+  <meta name="twitter:description" content="Bloo TeeVee" />
+  <meta name="twitter:image" content="https://i.imgur.com/fRcWyIZ.jpg" />
+  <meta name="twitter:url" content="http://www.blooteevee.com" />
+  <meta name="twitter:site" content="@blooteevee" />
+  <meta name="twitter:creator" content="@blooteevee" />
+<% end %>
