@@ -74,7 +74,7 @@
               <a onclick="javascript:window.open('http://twitter.com/share?text=<%= @video.title %> - &amp;url=<%= user_video_url(@user, @video) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0)" class="reddit-button">R</a>
             </div>
             <div class="forty-eight padding-top-mini">
-              <a onclick="javascript:window.open('https://www.facebook.com/sharer/sharer.php?u=<%= user_video_url(@user, @video) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0)" class="email-button">E</a>
+              <a onclick="javascript:window.open('mailto:?Subject=<%= @video.title %>&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 <%= user_video_path(@user, @video) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0)" class="email-button">E</a>
             </div>
             <div class="forty-eight padding-top-mini">
               <a onclick="javascript:window.open('http://twitter.com/share?text=<%= @video.title %> - &amp;url=<%= user_video_url(@user, @video) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0)" class="copy-button">C</a>
