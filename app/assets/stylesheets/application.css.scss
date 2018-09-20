@@ -577,7 +577,8 @@ video {
   font-weight: 400;
   letter-spacing: $letterspacer;
   &:hover {
-    color: $main;
+    background: $grey;
+    border-radius: $radius;
   }
 }
 
@@ -585,17 +586,18 @@ video {
   @include transition;
   cursor: pointer;
   color: $black;
-  padding: 3vh 1vw;
+  padding: 1vh 1vw;
   font-weight: 400;
   letter-spacing: $letterspacer;
   &:hover {
-    color: $main;
+    background: $grey;
+    border-radius: $radius;
   }
 }
 
 #menu-container {
   display: none;
-  width: 20%;
+  width: 30%;
   top: 0;
   right: 0;
   box-shadow: $shadow;
@@ -603,7 +605,6 @@ video {
 
 .side-menu {
   z-index: 1005;
-  width: 30%;
   background: white;
   height: 100%;
   position: absolute;
@@ -623,6 +624,7 @@ video {
     padding: 1vh 0;
     &:hover {
       color: $main;
+      background: transparent;
     }
   }
 }
@@ -651,6 +653,7 @@ video {
     &:hover {
       @include transition;
       color: $main;
+      background: transparent;
     }
   }
   ul {
@@ -1316,6 +1319,54 @@ select {
 
   #description-container {
     @include javaScriptForms;
+  }
+
+  @mixin mobile-nav {
+    float: none;
+    text-align: center;
+  }
+
+  .nav {
+    display: block;
+    .site-title {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding-bottom: 2vh;
+    }
+    ul {
+      width: 100%;
+      display: block;
+      text-align: center;
+      li {
+        width: 30%;
+        text-align: center;
+      }
+    }
+  }
+
+  .footer {
+    text-align: center;
+    span {
+      @include mobile-nav;
+    }
+    ul {
+      @include mobile-nav;
+    }
+  }
+
+  #menu-container {
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .side-menu {
+    ul {
+      text-align: center;
+      li {
+        text-align: center;
+      }
+    }
   }
 
 }

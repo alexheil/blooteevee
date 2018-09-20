@@ -5,6 +5,10 @@ class Users::VideosController < ApplicationController
   before_action :correct_video_user, only: [:edit, :update, :destroy]
   before_action :set_user, except: :show
 
+  def search
+
+  end
+
   def show
     @user = User.friendly.find(params[:user_id])
     @video = Video.friendly.find(params[:id])
