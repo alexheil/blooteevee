@@ -6,7 +6,7 @@ class Users::VideosController < ApplicationController
   before_action :set_user, except: :show
 
   def search
-
+    @videos = Video.search(params[:search]).order("created_at DESC").page params[:page]
   end
 
   def show
