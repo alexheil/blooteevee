@@ -7,17 +7,19 @@
 
     <%= render 'users/partials/nameplate' %>
 
-    <div class="padding-vertical-large border-bottom">
-      <div class="sixty">
-        <video class="video-player" width="100%" height="auto" controls controlslist="nodownload">
-          <source src="<%= @user.videos.first.video_url %>">
-          Your browser does not support this video.
-        </video>
-        <div class="padding-top mid-text">
-          <%= link_to @user.videos.first.title, user_video_path(@user, @user.videos.first) %>
+    <% if @user.videos.any? %>
+      <div class="padding-vertical-large border-bottom">
+        <div class="sixty">
+          <video class="video-player" width="100%" height="auto" controls controlslist="nodownload">
+            <source src="<%= @user.videos.first.video_url %>">
+            Your browser does not support this video.
+          </video>
+          <div class="padding-top mid-text">
+            <%= link_to @user.videos.first.title, user_video_path(@user, @user.videos.first) %>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
 
     <div class="flex padding-vertical-large">
       <aside class="sidebar">

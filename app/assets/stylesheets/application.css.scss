@@ -140,6 +140,10 @@ a {
   display: block;
 }
 
+.no-cursor {
+  cursor: text;
+}
+
 .inline-block {
   display: inline-block;
 }
@@ -866,8 +870,8 @@ select {
   background: #395085;
   border: 2px solid #395085;
   color: $white;
-  svg {
-    width: 25%;
+  img {
+    width: 100%;
     height: auto;
   }
 }
@@ -877,8 +881,8 @@ select {
   background: #55acee;
   border: 2px solid #55acee;
   color: $white;
-  svg {
-    width: 25%;
+  img {
+    width: 100%;
     height: auto;
   }
 }
@@ -888,8 +892,8 @@ select {
   background: #36465d;
   border: 2px solid #36465d;
   color: $white;
-  svg {
-    width: 25%;
+  img {
+    width: 100%;
     height: auto;
   }
 }
@@ -899,8 +903,8 @@ select {
   background: #ff4500;
   border: 2px solid #ff4500;
   color: $white;
-  svg {
-    width: 25%;
+  img {
+    width: 100%;
     height: auto;
   }
 }
@@ -910,8 +914,8 @@ select {
   background: #bd081c;
   border: 2px solid #bd081c;
   color: $white;
-  svg {
-    width: 25%;
+  img {
+    width: 100%;
     height: auto;
   }
 }
@@ -921,8 +925,8 @@ select {
   background: $border;
   border: 2px solid $border;
   color: $white;
-  svg {
-    width: 25%;
+  img {
+    width: 100%;
     height: auto;
   }
 }

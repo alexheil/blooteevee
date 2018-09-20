@@ -5,11 +5,17 @@
         <%= link_to 'Bloo Tee Vee', root_url %>
       </div>
       <ul class="center">
-        <li><%= link_to 'UPLOAD', become_member_path, class: "nav-links" %></li>
-           | 
         <% unless user_signed_in? %>
           <li><%= link_to 'SIGN IN', sign_in_path, class: "nav-links" %></li>
            | <li><%= link_to 'REGISTER', register_path, class: "nav-links" %></li>
+            | 
+        <% else %>
+          <% if current_user.membership.present? %>
+            <li><%= link_to 'UPLOAD', new_user_video_path(current_user), class: "nav-links" %></li>
+          <% else  %>
+            <li><%= link_to 'UPLOAD', become_member_path, class: "nav-links" %></li>
+          <% end %>
+            | 
         <% end %>
         <li><span id="menu-click">MENU</span></li>
       </ul>
@@ -31,7 +37,15 @@
 <div id="menu-container" class="side-menu">
   <nav class="padding-horizontal padding-vertical">
     <ul class="right">
-      <li><%= link_to 'UPLOAD', become_member_path, class: "nav-links" %></li>
+      <% if user_signed_in? %>
+        <% if current_user.membership.present? %>
+          <li><%= link_to 'UPLOAD', new_user_video_path(current_user), class: "nav-links" %></li>
+        <% else  %>
+          <li><%= link_to 'UPLOAD', become_member_path, class: "nav-links" %></li>
+        <% end %>
+      <% else %>
+        <li><%= link_to 'UPLOAD', become_member_path, class: "nav-links" %></li>
+      <% end %>
       <li><%= link_to 'SUBSCRIPTIONS', become_member_path, class: "nav-links" %></li>
       <li><%= link_to 'DISCOVER', categories_path, class: "nav-links" %></li>
       <% unless user_signed_in? %>
@@ -50,7 +64,7 @@
         <% else %>
           <li><%= link_to 'MERCHANT', new_user_merchant_path(current_user), class: "nav-links" %></li>
         <% end %>
-        <li><%= link_to 'SETTINGS', edit_user_registration_path(current_user), class: "nav-links" %></li>
+        <li><%= link_to 'SETTINGS', edit_user_registration_path, class: "nav-links" %></li>
         <li><%= link_to 'SIGN OUT', sign_out_path, class: "nav-links" %></li>
       <% end %>
       
