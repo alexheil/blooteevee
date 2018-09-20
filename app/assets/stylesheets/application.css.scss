@@ -863,42 +863,68 @@ select {
 
 .facebook-button {
   @include buttons;
-  padding: .51vh .51vw;
-  background: #3b5998;
-  border: 2px solid #3b5998;
+  background: #395085;
+  border: 2px solid #395085;
   color: $white;
+  svg {
+    width: 25%;
+    height: auto;
+  }
 }
 
 .twitter-button {
   @include buttons;
-  padding: .51vh .51vw;
   background: #55acee;
   border: 2px solid #55acee;
   color: $white;
+  svg {
+    width: 25%;
+    height: auto;
+  }
 }
 
 .tumblr-button {
   @include buttons;
-  padding: .51vh .51vw;
   background: #36465d;
   border: 2px solid #36465d;
   color: $white;
+  svg {
+    width: 25%;
+    height: auto;
+  }
 }
 
 .reddit-button {
   @include buttons;
-  padding: .51vh .51vw;
   background: #ff4500;
   border: 2px solid #ff4500;
   color: $white;
+  svg {
+    width: 25%;
+    height: auto;
+  }
+}
+
+.pinterest-button {
+  @include buttons;
+  background: #bd081c;
+  border: 2px solid #bd081c;
+  color: $white;
+  svg {
+    width: 25%;
+    height: auto;
+  }
 }
 
 .email-button {
   @include buttons;
-  padding: .51vh .51vw;
   background: $border;
   border: 2px solid $border;
   color: $white;
+  svg {
+    width: 25%;
+    height: auto;
+  }
 }
 
 .copy-button {

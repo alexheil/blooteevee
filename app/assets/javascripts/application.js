@@ -42,7 +42,6 @@ var flashTimeout = function() {
 $(document).ready(flashTimeout);
 $(document).on('turbolinks:load', flashTimeout);
 
-
 var getFilename = function() {
 
   $('input[type="file"]').change(function(e){
@@ -70,6 +69,7 @@ var videoClick = function() {
 
   $('.back').click(function() {
     $('#description-container').fadeOut(300);
+    $('#copy-container').fadeOut(300);
     $('.back').fadeOut(300);
     $(".wrapper").removeClass("blur");
   });
