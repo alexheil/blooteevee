@@ -1,4 +1,4 @@
-<%= provide(:title, sanitize(@user.profile.display_name.presence || @user.username)) %>
+<%= provide(:title, sanitize(@user.profile.display_name.presence || @user.username) + "'s Videos") %>
 
 <%= render 'users/partials/video_twitter_cards' %>
 
@@ -66,10 +66,7 @@
           Share
         </div>
         
-
         <div id="share-container">
-
-
           <div class="flex">
             <div class="forty-eight padding-top-mini">
               <a onclick="javascript:window.open('https://www.facebook.com/sharer/sharer.php?u=<%= user_video_url(@user, @video) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0)" class="facebook-button">F</a>
@@ -90,10 +87,7 @@
               <a onclick="javascript:window.open('mailto:?Subject=<%= @video.title %>&amp;Body=<%= @video.title %> <%= user_video_url(@user, @video) %>', '_blank');void(0)" class="email-button">E</a>
             </div>
           </div>
-
-
         </div>
-
 
       </div>
     </div>
