@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   get 'privacy' => 'static_pages#privacy'
   get 'terms' => 'static_pages#terms'
   get 'become-member' => 'static_pages#become_member'
+  get 'about' => 'static_pages#about'
+  get 'updates' => 'static_pages#updates'
+  get 'faq' => 'static_pages#faq'
 
   get 'search' => 'users/videos#search'
 

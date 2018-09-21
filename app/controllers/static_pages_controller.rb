@@ -9,6 +9,15 @@ class StaticPagesController < ApplicationController
   def terms
   end
 
+  def about
+  end
+
+  def faq
+  end
+
+  def updates
+  end
+
   def become_member
     if user_signed_in?
       Stripe.api_key = "sk_test_ECd3gjeIEDsGkySmF8FQOC5i"
