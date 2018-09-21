@@ -271,10 +271,10 @@ video {
   width: 13vw;
   object-fit: cover;
   display: block;
-  border-top-left-radius: $radius - 1;
-  border-top-right-radius: $radius - 1;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
+  border-top-left-radius: $radius;
+  border-top-right-radius: $radius;
+  border-bottom-left-radius: $radius;
+  border-bottom-right-radius: $radius;
   -webkit-backface-visibility: hidden;
   display: none;
 }
