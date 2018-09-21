@@ -330,6 +330,7 @@ video {
 
 .mid-text {
   font-size: $mid;
+  line-height: 1.25em;
 }
 
 .mid-text-category {
@@ -627,6 +628,12 @@ video {
       color: $main;
       background: transparent;
     }
+  }
+  .bottom {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 2vh 2vw;
   }
 }
 
@@ -1376,6 +1383,14 @@ select {
       li {
         text-align: center;
       }
+    }
+    .bottom {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      padding: 2vh 0;
+      width: 100%;
+      text-align: center;
     }
   }
 

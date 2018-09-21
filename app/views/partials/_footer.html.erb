@@ -5,6 +5,9 @@
       <ul>
         <li><%= link_to "Terms", terms_path, class: "nav-links" %></li>
         <li><%= link_to "Privacy", privacy_path, class: "nav-links" %></li>
+        <% if user_signed_in? %>
+
+        <% end %>
       </ul>
     </nav>
     <div class="footer-disclaimer">
