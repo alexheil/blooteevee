@@ -941,6 +941,10 @@ select {
   background: $border;
   border: 2px solid $border;
   color: $white;
+  cursor: default;
+  &:hover {
+    box-shadow: none;
+  }
 }
 
 .fake-button-dark {

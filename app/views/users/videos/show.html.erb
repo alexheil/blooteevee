@@ -1,4 +1,4 @@
-<%= provide(:title, sanitize(@user.profile.display_name.presence || @user.username) + "'s Videos") %>
+<%= provide(:title, sanitize(@user.profile.display_name.presence || @user.username) + raw("'s Videos")) %>
 
 <%= render 'users/partials/video_twitter_cards' %>
 
