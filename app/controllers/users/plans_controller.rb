@@ -1,6 +1,7 @@
 class Users::PlansController < ApplicationController
 
   before_action :authenticate_user!
+  before_action :merchant_account
 
   def new
     if user_signed_in? && current_user.merchant.present?
@@ -29,7 +30,7 @@ class Users::PlansController < ApplicationController
       {
         id: @user.username + "_" + @user.id.to_s,
         name: @user.username + "_" + @user.id.to_s,
-        statement_descriptor: "NINVAL | " + @user.username[0...13].upcase
+        statement_descriptor: "BLOOTV | " + @user.username[0...13].upcase
       },
       currency: params[:plan][:currency],
       id: @user.username + "_" + @user.id.to_s
@@ -81,7 +82,7 @@ class Users::PlansController < ApplicationController
       {
         id: @user.username + "_" + @user.id.to_s,
         name: @user.username + "_" + @user.id.to_s,
-        statement_descriptor: "NINVAL | " + @user.username[0...13].upcase
+        statement_descriptor: "BLOOTV | " + @user.username[0...13].upcase
       },
       currency: params[:plan][:currency],
       id: @user.username + "_" + @user.id.to_s
@@ -104,6 +105,14 @@ class Users::PlansController < ApplicationController
   end
 
   private
+
+    def merchant_account
+      @user = current_user
+      if @user.merchant.nil?
+        redirect_to new_user_merchant_path(@user)
+        flash[:alert] = "You need to set up a merchant account first."
+      end
+    end
 
     def plan_params
       params.require(:plan).permit(:plan_id, :product_id, :amount, :currency)

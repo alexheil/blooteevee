@@ -23,10 +23,20 @@
           </div>
         </div>
       <% else %>
-        <video class="video-player" width="100%" height="auto" controls controlslist="nodownload">
-          <source src="<%= @video.video_url %>">
-          Your browser does not support this video.
-        </video>
+        <% if current_user.subscribing?(@user) || current_user == @user %>
+          <video class="video-player" width="100%" height="auto" controls controlslist="nodownload">
+            <source src="<%= @video.video_url %>">
+            Your browser does not support this video.
+          </video>
+        <% else %>
+          <video class="video-player" width="100%" height="auto" controls controlslist="nodownload">
+            <source src="">
+            Your browser does not support this video.
+          </video>
+          <div class="padding-top">
+            This is a premium video. You must be subscribed to <%= link_to @user.profile.display_name.presence || @user.username, user_path(@user) %> to view this content.
+          </div>
+        <% end %>
       <% end %>
 
     </div>
