@@ -1,6 +1,8 @@
 class Users::CommentsController < ApplicationController
 
-  before_action :authenticate_commenter
+  before_action :authenticate_user!
+  before_action :correct_user, except: :create
+  before_action :subscriber
 
   def create
     @user = User.friendly.find(params[:user_id])
@@ -33,7 +35,7 @@ class Users::CommentsController < ApplicationController
     @user = User.friendly.find(params[:user_id])
     @video = Video.friendly.find(params[:video_id])
     @comment = Comment.find(params[:id]).destroy
-    redirect_to user_course_track_video_path(@user, @course, @track, @video)
+    redirect_to user_video_path(@user, @video)
   end
 
   private
@@ -42,15 +44,20 @@ class Users::CommentsController < ApplicationController
       params.require(:comment).permit(:content)
     end
 
-    def authenticate_commenter
-      redirect_to sign_in_path unless user_signed_in? || student_signed_in?
-    end
-
     def correct_user
       @user = User.friendly.find(params[:user_id])
       @video = Video.friendly.find(params[:video_id])
       @comment = Comment.find(params[:id])
       if current_user.id != @comment.user_id
+        redirect_to user_video_path(@user, @video)
+        flash[:alert] = "This is not your comment."
+      end
+    end
+
+    def subscriber
+      @user = User.friendly.find(params[:user_id])
+      @video = Video.friendly.find(params[:video_id])
+      unless current_user.subscribed?(@user) || current_user == @user
         redirect_to user_video_path(@user, @video)
         flash[:alert] = "This is not your comment."
       end
