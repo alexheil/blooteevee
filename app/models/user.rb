@@ -69,4 +69,10 @@ class User < ApplicationRecord
       self.username = username.downcase
     end
 
+    def subscriber_email
+      User.includes(:subscriptions).where(:subscriptions => { subscribed_id: id }).find_each do |sub|
+        puts sub.username
+      end
+    end
+
 end
