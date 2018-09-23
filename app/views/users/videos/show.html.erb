@@ -39,6 +39,30 @@
         <% end %>
       <% end %>
 
+      <% if current_user == @user %>
+
+        <div class="padding-top">
+          <div class="flex">
+            <div class="forty-eight">
+              <%= link_to edit_user_video_path(@user, @video) do %>
+                <div class="fake-button">
+                  Edit
+                </div>
+              <% end %>
+            </div>
+
+            <div class="forty-eight">
+              <%= link_to(user_video_path(@user, @video), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete) do %>
+                <div class="remove-button">
+                  Remove
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+      <% end %>
+
     </div>
 
     <div class="flex padding-vertical-large border-bottom">

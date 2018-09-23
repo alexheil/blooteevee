@@ -46,6 +46,7 @@ class Users::VideosController < ApplicationController
   end
 
   def destroy
+    @video = Video.friendly.find(params[:id]).destroy
     redirect_to user_path(@user)
   end
 

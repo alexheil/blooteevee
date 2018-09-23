@@ -153,6 +153,7 @@ a {
 }
 
 .link-color {
+  color: white;
   a {
     color: $white;
     &:hover {
@@ -239,7 +240,6 @@ video {
 .blackbox {
   background: white;
   width: 100%;
-  height: 450px;
   border: 1px solid $border;
   border-radius: $radius;
 }
@@ -869,6 +869,13 @@ select {
   @include buttons;
   background: $red;
   border: 2px solid $red;
+}
+
+.remove-button {
+  @include buttons;
+  background: $red;
+  border: 2px solid $red;
+  padding: .51vh .51vw;
 }
 
 .fake-button {
