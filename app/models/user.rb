@@ -72,7 +72,7 @@ class User < ApplicationRecord
 
     def subscriber_email
       User.includes(:passive_subscriptions).where(:subscriptions => { created_at: Time.zone.now.yesterday.beginning_of_day..Time.zone.now.yesterday.end_of_day }).find_each do |user|
-        UserMailer.subscriber_email(user).deliver_now
+        UserMailer.subscriber_email(user).deliver_now unless user.subscription_email == false
       end
     end
 

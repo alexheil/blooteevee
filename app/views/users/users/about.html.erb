@@ -1,4 +1,4 @@
-<%= provide(:title, sanitize(@user.profile.display_name.presence || @user.username)) %>
+<%= provide(:title, "About " + sanitize(@user.profile.display_name.presence || @user.username)) %>
 
 <div class="wrapper">
   <div class="container">

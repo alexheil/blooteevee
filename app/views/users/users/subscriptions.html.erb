@@ -1,0 +1,23 @@
+<%= provide(:title, sanitize(@user.profile.display_name.presence || @user.username) + "\n's Subscriptions") %>
+
+<div class="wrapper">
+  <div class="container">
+
+    <%= render 'users/partials/nameplate' %>
+
+    <div class="flex padding-vertical-large">
+      <aside class="sidebar">
+        <ul>
+          <li class="inactive-sidebar-tab"><%= link_to "Videos", user_path(@user) %></li>
+          <li class="inactive-sidebar-tab"><%= link_to "Description", user_about_path(@user) %></li>
+          <li class="active-sidebar-tab"><%= link_to "Subscriptions", user_subscriptions_path(@user) %></li>
+        </ul>
+      </aside>
+
+      <main class="content">
+        
+      </main>
+    </div>
+
+  </div>
+</div>

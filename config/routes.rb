@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       resources :comments, controller: 'users/comments', only: [:create, :update, :destroy]
     end
     get 'about' => 'users/users#about'
+    get 'subscriptions' => 'users/users#subscriptions'
   end
 
   resources :subscriptions, controller: 'users/subscriptions', only: [:create, :destroy]

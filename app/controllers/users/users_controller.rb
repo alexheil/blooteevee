@@ -10,5 +10,10 @@ class Users::UsersController < ApplicationController
   def about
     @user = User.friendly.find(params[:user_id])
   end
+
+  def subscriptions
+    @user = User.friendly.find(params[:user_id])
+    @subscriptioins = @user.subscribing
+  end
   
 end

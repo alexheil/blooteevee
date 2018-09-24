@@ -8,7 +8,7 @@
         Settings
       </div>
 
-      <div class="padding-bottom">
+      <div>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <%= devise_error_messages! %>
 
@@ -27,20 +27,8 @@
 
           <div class="flex">
             <div class="field-three-column">
-              <label class="inactive-paid-tab" id="first-email-tab" for="first-email-inactive">Purchases</label>
-              <span class="hidden"><%= f.check_box :purchase_email, id: "first-email-inactive" %></span>
-            </div>
-            <div class="field-three-column">
-              <label class="inactive-paid-tab" id="second-email-tab" for="second-email-inactive">Refunds</label>
-              <span class="hidden"><%= f.check_box :refund_email, id: "second-email-inactive" %></span>
-            </div>
-            <div class="field-three-column">
               <label class="inactive-paid-tab" id="third-email-tab" for="third-email-inactive">Subscriptions</label>
               <span class="hidden"><%= f.check_box :subscription_email, id: "third-email-inactive" %></span>
-            </div>
-            <div class="field-three-column">
-              <label class="inactive-paid-tab" id="fourth-email-tab" for="fourth-email-inactive">Reviews</label>
-              <span class="hidden"><%= f.check_box :review_email, id: "fourth-email-inactive" %></span>
             </div>
             <div class="field-three-column">
               <label class="inactive-paid-tab" id="fifth-email-tab" for="fifth-email-inactive">Comments</label>

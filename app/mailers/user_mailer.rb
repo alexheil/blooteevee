@@ -1,4 +1,4 @@
-class ArtistMailer < ApplicationMailer
+class UserMailer < ApplicationMailer
   default from: 'noisaea-notifications@blooteevee.com'
 
   def subscriber_email(user)
