@@ -31,11 +31,9 @@
             <% end %>
           <% else %>
             <% if current_user.plan.present?  %>
-              <%= link_to edit_user_plan_path(current_user) do %>
-                <div class="fake-button link-color">
-                  Your plan is <%= current_user.plan.amount %>. Edit?
-                </div>
-              <% end %>
+              <div class="copy-button link-color">
+                Your plan is <%= current_user.plan.amount %>. Edit?
+              </div>
             <% else %>
               <%= link_to new_user_plan_path(current_user) do %>
                 <div class="fake-button link-color">

@@ -3,7 +3,7 @@ class ArtistMailer < ApplicationMailer
 
   def subscriber_email(user)
     @user = user
-    mail(to: @user.email, subject: 'You have some new subscribers | Bloo TeeVee')
+    mail(to: @user.email, subject: 'You have new subscribers | Bloo TeeVee')
   end
 
 end

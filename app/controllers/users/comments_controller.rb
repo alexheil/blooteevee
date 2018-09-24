@@ -23,7 +23,7 @@ class Users::CommentsController < ApplicationController
     @video = Video.friendly.find(params[:video_id])
     @comment = Comment.find(params[:id])
     if @comment.update_attributes(comment_params)
-      flash[:notice] = "You just updated your comment on #{@video.title}!"
+      flash[:notice] = "You updated your comment on #{@video.title}!"
       redirect_to user_video_path(@user, @video)
     else
       flash.now[:alert] = 'Whoa! Something went wrong!'
