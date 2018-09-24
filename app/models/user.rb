@@ -22,7 +22,7 @@ class User < ApplicationRecord
   has_many :subscribing, through: :active_subscriptions,  source: :subscribed
   has_many :subscribers, through: :passive_subscriptions, source: :subscriber
   has_many :videos, dependent: :destroy
-  # has_many :comments, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   before_save :should_generate_new_friendly_id?, if: :username_changed?
   before_save :downcase_username
@@ -71,8 +71,8 @@ class User < ApplicationRecord
     end
 
     def subscriber_email
-      User.includes(:passive_subscriptions).where(:subscriptions => { created_at: Time.zone.now.yesterday }).find_each do |sub|
-        puts sub.username
+      User.includes(:passive_subscriptions).where(:subscriptions => { created_at: Time.zone.now.yesterday.beginning_of_day..Time.zone.now.yesterday.end_of_day }).find_each do |user|
+        UserMailer.subscriber_email(user).deliver_now
       end
     end
 
