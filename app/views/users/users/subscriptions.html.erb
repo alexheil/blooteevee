@@ -1,4 +1,4 @@
-<%= provide(:title, sanitize(@user.profile.display_name.presence || @user.username) + "\n's Subscriptions") %>
+<%= provide(:title, sanitize(@user.profile.display_name.presence || @user.username) + raw("\n's Subscriptions")) %>
 
 <div class="wrapper">
   <div class="container">
