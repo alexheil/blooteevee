@@ -15,7 +15,31 @@
       </aside>
 
       <main class="content">
-        
+        <% if @subscriptions.any? %>
+          <div class="flex">
+            <% @subscriptions.each do |user| %>
+              <div class="twenty-four border">
+
+                <img class="thumbnail-image-feed-four" src="<%= user.profile.image_url(:thumb) %>">
+
+                  <div class="mini-text">
+                    <div class="flex">
+                      <div class="forty-eight">
+                        <%= link_to user.profile.display_name.presence || user.username, user_path(user), class: "black-link" %>
+                      </div>
+                      <div class="forty-eight right">
+                        <%= pluralize(user.passive_subscriptions.count) %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+          There are no subscriptions... yet. <%= link_to "Let's find something you'll love!", categories_path if @user == current_user %>
+        <% end %>
       </main>
     </div>
 
