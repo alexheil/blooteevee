@@ -20,15 +20,18 @@
             <% @subscriptions.each do |user| %>
               <div class="twenty-four border">
 
-                <img class="thumbnail-image-feed-four" src="<%= user.profile.image_url(:thumb) %>">
+                <%= link_to user_path(user) do %>
+                  <img class="thumbnail-image-feed-four" src="<%= user.profile.image_url(:thumb) %>">
+                <% end %>
 
+                <div class="padding-horizontal-mini padding-vertical-mini border-top">
                   <div class="mini-text">
                     <div class="flex">
                       <div class="forty-eight">
                         <%= link_to user.profile.display_name.presence || user.username, user_path(user), class: "black-link" %>
                       </div>
                       <div class="forty-eight right">
-                        <%= pluralize(user.passive_subscriptions.count) %>
+                        <%= pluralize(user.passive_subscriptions.count, 'subscriber') %>
                       </div>
                     </div>
                   </div>

@@ -13,7 +13,7 @@ class Users::UsersController < ApplicationController
 
   def subscriptions
     @user = User.friendly.find(params[:user_id])
-    @subscriptioins = @user.subscribing
+    @subscriptions = @user.subscribing
   end
   
 end

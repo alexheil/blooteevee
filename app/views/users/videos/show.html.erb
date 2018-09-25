@@ -166,7 +166,9 @@
                 <% @user.videos.each do |video| %>
                   <div class="twenty-four border">
 
-                    <img class="thumbnail-image-feed-four" src="<%= video.image_url(:thumb) %>">
+                    <%= link_to user_video_path(@user, video) do %>
+                      <img class="thumbnail-image-feed-four" src="<%= video.image_url(:thumb) %>">
+                    <% end %>
 
                     <div class="padding-horizontal-mini padding-vertical-mini border-top">
                       <div class="video-title">
