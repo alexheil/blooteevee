@@ -1,6 +1,10 @@
 class StaticPagesController < ApplicationController
 
   def home
+    if user_signed_in?
+      @subscriptions = current_user.feed
+      @subscribing = current_user.subscribing
+    end
   end
 
   def privacy

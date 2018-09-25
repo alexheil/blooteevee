@@ -56,7 +56,7 @@ class User < ApplicationRecord
   end
 
   def feed
-    subscribing_ids = "SELECT subscribed_id FROM relationships WHERE  subscriber_id = :user_id"
+    subscribing_ids = "SELECT subscribed_id FROM subscriptions WHERE  subscriber_id = :user_id"
     Video.where("user_id IN (#{subscribing_ids}) OR user_id = :user_id", user_id: id)
   end
 
