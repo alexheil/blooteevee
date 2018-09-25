@@ -675,6 +675,9 @@ video {
       &:first-child {
         margin: 0 1vw 0 0;
       }
+      &:last-child {
+        margin: 0 0 0 1vw;
+      }
     }
   }
 }
