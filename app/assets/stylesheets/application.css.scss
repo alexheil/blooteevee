@@ -743,6 +743,11 @@ video {
   }
 }
 
+.form-border {
+  box-shadow: $shadow-lite;
+  border-radius: $radius;
+}
+
 textarea:focus, input:focus {
   outline: none;
 }
