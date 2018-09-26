@@ -5,7 +5,7 @@
 <div class="wrapper">
   <div class="container">
 
-    <div class="padding-vertical-large border-bottom">
+    <div class="padding-vertical-large">
 
       <% if @video.free? %>
         <div class="flex">
@@ -23,7 +23,7 @@
           </div>
         </div>
       <% else %>
-        <% if current_user.subscribing?(@user) || current_user == @user %>
+        <% if user_signed_in? && (current_user.subscribing?(@user)) || (current_user == @user) %>
           <video class="video-player" width="100%" height="auto" controls controlslist="nodownload">
             <source src="<%= @video.video_url %>">
             Your browser does not support this video.
@@ -65,8 +65,8 @@
 
     </div>
 
-    <div class="flex padding-vertical-large border-bottom">
-      <div class="eighty-three">
+    <div class="flex">
+      <div class="eighty-one form-border">
         <div class="mid-text padding-bottom-mini">
           <%= @video.title %>
         </div>
@@ -82,7 +82,7 @@
 
       </div>
 
-      <div class="thirteen">
+      <div class="thirteen form-border">
         <div class="padding-bottom-mini">
           76,654 views
         </div>
@@ -119,8 +119,8 @@
     <div class="flex padding-vertical-large">
       <aside class="sidebar">
         <ul>
-          <li class="active-sidebar-tab"><span id="first-tab-click">Comments</span></li>
-          <li class="inactive-sidebar-tab"><span id="second-tab-click">More videos</span></li>
+          <li id="first-tab-click" class="active-sidebar-tab">Comments</li>
+          <li id="second-tab-click" class="inactive-sidebar-tab">More videos</li>
         </ul>
       </aside>
 

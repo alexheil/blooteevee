@@ -1,9 +1,9 @@
 class Users::VideosController < ApplicationController
 
-  before_action :authenticate_user!, except: :show
+  before_action :authenticate_user!, except: [:show, :search]
   before_action :correct_user, only: [:new, :create]
   before_action :correct_video_user, only: [:edit, :update, :destroy]
-  before_action :set_user, except: :show
+  before_action :set_user, except: [:show, :search]
 
   def search
     @videos = Video.search(params[:search]).order("created_at DESC").page params[:page]

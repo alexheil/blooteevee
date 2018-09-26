@@ -261,9 +261,7 @@ video {
 }
 
 .blackbox {
-  background: white;
   width: 100%;
-  border: 1px solid $border;
   border-radius: $radius;
 }
 
@@ -528,6 +526,13 @@ video {
 .seventy-three {
   margin: 0;
   width: 73%;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.eighty-one {
+  margin: 0;
+  width: 81%;
   display: inline-block;
   vertical-align: bottom;
 }
