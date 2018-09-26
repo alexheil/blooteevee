@@ -8,7 +8,7 @@
         Edit your plan
       </div>
 
-      <div class="padding-bottom">
+      <div class="padding-bottom form-border">
         <%= form_for(@plan, url: user_plan_path) do |f| %>
           <div class="field">
             <%= f.label :amount, "Amount per month" %><span class="dark mini-text"> Your plan is currently at <%= @user.plan.amount %> <%= @user.plan.currency.upcase %> per month.</span>
@@ -22,7 +22,7 @@
         <% end %>
       </div>
 
-      <div class="padding-bottom dark">
+      <div class="padding-top dark center">
         Don't forget that Stripe, our secure payment processor, takes a fee of <i>2.9% plus 0.30 (USD)</i> from <i>each transaction</i>.
       </div>
 

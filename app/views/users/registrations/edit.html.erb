@@ -8,23 +8,25 @@
         Settings
       </div>
 
-      <div>
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <%= devise_error_messages! %>
 
+        <div class="form-border">
           <div class="field">
             <%= f.label :username %><span class="dark mini-text"> This will also change your URL.</span>
             <%= f.text_field :username, class: "text-field" %>
           </div>
-          <div class="field">
+          <div class="margin-top">
             <%= f.label :email %>
             <%= f.email_field :email, autocomplete: "email", class: "text-field" %>
           </div>
+        </div>
 
-          <div class="padding-vertical-large center mid-text border-top">
-            Receive emails for:
-          </div>
+        <div class="padding-vertical-large center mid-text">
+          Receive emails for:
+        </div>
 
+        <div class="form-border">
           <div class="flex">
             <div class="field-three-column">
               <label class="inactive-paid-tab" id="third-email-tab" for="third-email-inactive">Subscriptions</label>
@@ -50,21 +52,21 @@
             <%= f.password_field :current_password, autocomplete: "off", class: "text-field" %>
           </div>
 
-          <div class="border-bottom padding-bottom">
+          <div class="">
             <%= f.submit "Update", class: "submit-button" %>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
 
        <div class="padding-vertical-large center mid-text">
         Add a payment source?
       </div>
 
-      <div class="padding-vertical">
+      <div class="padding-bottom dark center">
         You can update your default payment method by adding a card.
       </div>
 
-      <div class="border-bottom padding-bottom">
+      <div class="form-border">
         <div class="link-color">
           <%= link_to "Add payment source", edit_user_source_path(@user), class: "fake-button" %>
         </div>
@@ -74,11 +76,11 @@
         Want to delete your account?
       </div>
 
-      <div class="padding-vertical">
+      <div class="padding-bottom dark center">
         You will not be able to get your account back. You will not be able to access your videos or subscriptions. All video subscriptions will be terminated upon deleting your account. It is recommended to keep your account open to view subscriptions.
       </div>
 
-      <div class="padding-bottom">
+      <div class="form-border">
         <%= button_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "removal-button" %>
       </div>
 

@@ -8,7 +8,7 @@
         Set up a merchant account
       </div>
 
-      <div class="padding-bottom">
+      <div class="padding-bottom form-border">
         <%= form_for(@merchant, url: user_merchant_path) do |f| %>
           <%= f.hidden_field :user_id %>
           <%= render 'partials/errors/merchant_errors' %>

@@ -8,7 +8,7 @@
         Sign in
       </div>
 
-      <div class="padding-bottom">
+      <div class="padding-bottom form-border">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="field">
             <%= f.label :login, "Username or email" %>
@@ -27,13 +27,13 @@
             </div>
           <% end -%>
 
-          <div class="border-bottom padding-bottom">
+          <div class="">
             <%= f.submit "Sign in", class: "submit-button" %>
           </div>
         <% end %>
       </div>
 
-      <div class="padding-bottom">
+      <div class="padding-top center">
         <%= link_to "But I don't have an account yet.", register_path %>
       </div>
 

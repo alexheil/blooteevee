@@ -12,7 +12,7 @@
         You currently do not have a plan. A plan allows users to subscribe to you for a monthly cost. This can be to access premium videos, or simply to support you if all of your videos are already free.
       </div>
 
-      <div class="padding-bottom">
+      <div class="padding-bottom form-border">
         <%= form_for(@plan, url: user_plan_path) do |f| %>
           <div class="field">
             <%= f.label :amount, "Amount per month" %>
@@ -26,7 +26,7 @@
         <% end %>
       </div>
 
-      <div class="padding-bottom dark">
+      <div class="padding-top dark center">
         Don't forget that Stripe, our secure payment processor, takes a fee of <i>2.9% plus 0.30 (USD)</i> from <i>each transaction</i>.
       </div>
 

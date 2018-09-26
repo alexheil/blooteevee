@@ -8,9 +8,15 @@
     <div class="flex padding-vertical-large">
       <aside class="sidebar">
         <ul>
-          <li class="inactive-sidebar-tab"><%= link_to "Videos", user_path(@user) %></li>
-          <li class="active-sidebar-tab"><%= link_to "Description", user_about_path(@user) %></li>
-          <li class="inactive-sidebar-tab"><%= link_to "Subscriptions", user_subscriptions_path(@user) %></li>
+          <%= link_to user_path(@user), class: "link-black" do %>
+            <li class="inactive-sidebar-tab">Videos</li>
+          <% end %>
+          <%= link_to user_about_path(@user), class: "link-color" do %>
+            <li class="active-sidebar-tab">Description</li>
+          <% end %>
+          <%= link_to user_subscriptions_path(@user), class: "link-black" do %>
+            <li class="inactive-sidebar-tab">Subscriptions</li>
+          <% end %>
         </ul>
       </aside>
 

@@ -40,6 +40,13 @@ $mid: 2em;
   text-transform: uppercase;
 }
 
+@mixin coolborder {
+  box-shadow: $shadow-lite;
+  border-radius: $radius;
+  padding: 1vh 1vw;
+  background: $white;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -48,7 +55,7 @@ body {
   letter-spacing: 0px;
   font-family: $fancy;
   font-weight: 400;
-  background: $white;
+  background: $grey;
   color: $black;
   -webkit-font-smoothing: antialiased;
 }
@@ -159,6 +166,22 @@ a {
     &:hover {
       color: $white;
     }
+  }
+  &:hover {
+    color: $white;
+  }
+}
+
+.link-black {
+  color: black;
+  a {
+    color: $black;
+    &:hover {
+      color: $black;
+    }
+  }
+  &:hover {
+    color: $black;
   }
 }
 
@@ -351,8 +374,8 @@ video {
 }
 
 .padding-vertical {
-  padding-top: 2vh;
-  padding-bottom: 2vh;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
 }
 
 .padding-top-mini {
@@ -360,6 +383,10 @@ video {
 }
 
 .padding-top {
+  padding-top: 1vh;
+}
+
+.padding-top-large {
   padding-top: 2vh;
 }
 
@@ -368,16 +395,16 @@ video {
 }
 
 .padding-bottom {
-  padding-bottom: 2vh;
+  padding-bottom: 1vh;
 }
 
 .padding-vertical-large {
-  padding-top: 5vh;
-  padding-bottom: 5vh;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
 }
 
 .padding-bottom-large {
-  padding-bottom: 5vh;
+  padding-bottom: 2vh;
 }
 
 .padding-horizontal-mini {
@@ -416,28 +443,29 @@ video {
 }
 
 .sidebar {
+  @include coolborder;
   margin: 0;
-  width: 15%;
+  width: 19%;
   display: inline-block;
   vertical-align: bottom;
   ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    text-align: right;
     li {
-      margin-bottom: 2vh;
+      margin-bottom: 1vh;
       position: relative;
-      a {
-        color: black;
-      }
+    }
+    &:last-child {
+      margin-bottom: 0;
     }
   }
 }
 
 .content {
+  @include coolborder;
   margin: 0;
-  width: 83%;
+  width: 75%;
   display: inline-block;
   vertical-align: bottom;
 }
@@ -459,15 +487,16 @@ video {
 }
 
 .twenty-four {
-  margin: 0 0 2vh 0;
+  margin: 0 0 1vh 0;
   width: 24%;
   display: inline-block;
   vertical-align: bottom;
 }
 
 .twenty-five {
+  @include coolborder;
   margin: 0;
-  width: 25%;
+  width: 23%;
   display: inline-block;
   vertical-align: bottom;
 }
@@ -491,14 +520,16 @@ video {
 }
 
 .sixty {
+  @include coolborder;
   margin: 0 auto;
   width: 60%;
   vertical-align: top;
 }
 
 .seventy-three {
+  @include coolborder;
   margin: 0;
-  width: 73%;
+  width: 71%;
   display: inline-block;
   vertical-align: bottom;
 }
@@ -535,7 +566,8 @@ video {
 .header-container {
   width: 100%;
   margin: 0 auto;
-  background: transparent;
+  background: white;
+  box-shadow: $shadow-lite;
   a {
     color: $black;
   }
@@ -642,8 +674,8 @@ video {
 .full-footer-container {
   width: 100%;
   clear: both;
-  padding-top: 15vh;
   background: $white;
+  box-shadow: $shadow-lite;
 }
 
 .footer {
@@ -747,8 +779,7 @@ video {
 }
 
 .form-border {
-  box-shadow: $shadow-lite;
-  border-radius: $radius;
+  @include coolborder;
 }
 
 textarea:focus, input:focus {
@@ -825,6 +856,20 @@ select {
 }
 
 .field-two-column {
+  margin: 0 0 0 0;
+  width: 49%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.field-two-column-top {
+  margin: 2vh 0 0 0;
+  width: 49%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.field-two-column-bottom {
   margin: 0 0 2vh 0;
   width: 49%;
   display: inline-block;
@@ -833,6 +878,16 @@ select {
 
 .field-three-column {
   margin: 0 0 2vh 0;
+  width: 32%;
+  display: inline-block;
+  vertical-align: top;
+  select { 
+    background-position-x: 94%;
+  }
+}
+
+.field-three-column-top {
+  margin: 2vh 0 0 0;
   width: 32%;
   display: inline-block;
   vertical-align: top;
@@ -1027,22 +1082,36 @@ select {
 }
 
 .active-sidebar-tab {
-  border-left: 3px solid $main;
+  background: $main;
+  color: $white;
+  padding: 1vh 1vw;
   text-transform: uppercase;
   text-align: left;
-  padding-left: 2vw;
   cursor: pointer;
+  border-radius: $radius;
+  a {
+    color: $white;
+    &:hover {
+      color: $white;
+    }
+  }
 }
 
 .inactive-sidebar-tab {
   @include transition;
-  border-left: 3px solid $border;
+  padding: 1vh 1vw;
   text-transform: uppercase;
   text-align: left;
-  padding-left: 2vw;
   cursor: pointer;
+  border-radius: $radius;
+  a {
+    color: $black;
+    &:hover {
+      color: $black;
+    }
+  }
   &:hover {
-    border-left: 3px solid $dark;
+    background: $grey;
   }
 }
 

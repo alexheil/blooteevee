@@ -60,7 +60,7 @@
           Register
         </div>
 
-        <div class="padding-vertical padding-horizontal form-border">
+        <div class="padding-vertical form-border">
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
             <%= devise_error_messages! %>
 
@@ -75,17 +75,17 @@
             </div>
 
             <div class="field">
-              <%= f.label :password %> <span class="dark mini-text"><%= @minimum_password_length.to_s + " characters minimum." if @minimum_password_length %></span>
+              <%= f.label :password %> <span class="dark mini-text">6 characters minimum.</span>
               <%= f.password_field :password, autocomplete: "off", class: "text-field" %>
             </div>
 
-            <div class="border-bottom padding-bottom">
+            <div class="">
               <%= f.submit "Register", class: "submit-button" %>
             </div>
           <% end %>
         </div>
 
-        <div class="padding-bottom border-bottom">
+        <div class="padding-top center">
           <%= link_to "But I already have an account.", sign_in_path %>
         </div>
       </div>

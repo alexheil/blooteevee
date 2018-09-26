@@ -8,7 +8,7 @@
         Edit your profile
       </div>
 
-      <div class="padding-bottom">
+      <div class="padding-bottom form-border">
         <%= form_for(@profile, url: user_profile_path(@user)) do |f| %>
           <span id="profile_errors"><%= render 'partials/errors/profile_errors' %></span>
           

@@ -8,7 +8,7 @@
         Register
       </div>
 
-      <div class="padding-bottom">
+      <div class="padding-bottom form-border">
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= devise_error_messages! %>
 
@@ -27,24 +27,26 @@
             <%= f.password_field :password, autocomplete: "off", class: "text-field" %>
           </div>
 
-          <div class="border-bottom padding-bottom">
+          <div class="">
             <%= f.submit "Register", class: "submit-button" %>
           </div>
         <% end %>
       </div>
 
-      <div class="padding-bottom border-bottom">
+      <div class="padding-top center">
         <%= link_to "But I already have an account.", sign_in_path %>
       </div>
 
-      <div class="padding-vertical-large">
+      <div class="padding-top-large">
         <div class="padding-bottom-large center mid-text">
           Why join Bloo TeeVee?
         </div>
-        <p>Write and publish as many original, educational blog posts as you want, free for all.</p>
-        <p>Create unlimited courses that are either free for the entire planet or exclusive to students who purchase your course or subscribe to you.</p>
-        <p>Allow students to subscribe to you for a monthly fee that grants them access to all of your courses. Perfect for those philomaths.</p>
-        <p>Keep 90 percent of your earnings. That's right! Ninth Valley only keeps 10 percent as a platform fee which means you keep the money you make.</p>
+        <div class="form-border">
+          <div class="padding-bottom">Write and publish as many original, educational blog posts as you want, free for all.</div>
+          <div class="padding-bottom">Create unlimited courses that are either free for the entire planet or exclusive to students who purchase your course or subscribe to you.</div>
+          <div class="padding-bottom">Allow students to subscribe to you for a monthly fee that grants them access to all of your courses. Perfect for those philomaths.</div>
+          <div>Keep 90 percent of your earnings. That's right! Ninth Valley only keeps 10 percent as a platform fee which means you keep the money you make.</div>
+        </div>
       </div>
 
 
