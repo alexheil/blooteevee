@@ -494,9 +494,8 @@ video {
 }
 
 .twenty-five {
-  @include coolborder;
   margin: 0;
-  width: 23%;
+  width: 25%;
   display: inline-block;
   vertical-align: bottom;
 }
@@ -527,9 +526,8 @@ video {
 }
 
 .seventy-three {
-  @include coolborder;
   margin: 0;
-  width: 71%;
+  width: 73%;
   display: inline-block;
   vertical-align: bottom;
 }
