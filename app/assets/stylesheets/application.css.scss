@@ -1349,7 +1349,7 @@ select {
   }
 
   .sidebar {
-    margin: 0;
+    margin: 0 0 2vh 0;
     width: 100%;
     display: inline-block;
     vertical-align: bottom;
@@ -1359,9 +1359,10 @@ select {
       margin: 0;
       text-align: center;
       li {
-        margin-bottom: 2vh;
+        margin-bottom: 0;
         position: relative;
         display: inline-block;
+        text-align: center;
         a {
           color: black;
         }
@@ -1377,28 +1378,20 @@ select {
   }
 
   .active-sidebar-tab {
-    border-left: 0;
-    border-bottom: 3px solid $main;
     text-align: center;
-    padding-left: 0;
+    padding: 2vh 2vw;
     margin-left: 1vw;
     margin-right: 1vw;
-    padding-bottom: 2vh;
+    text-align: center;
   }
 
   .inactive-sidebar-tab {
     @include transition;
-    border-left: 0;
-    border-bottom: 3px solid $border;
     text-align: center;
-    padding-left: 0;
     margin-left: 1vw;
     margin-right: 1vw;
-    padding-bottom: 2vh;
-    &:hover {
-      border-left: 0;
-      border-bottom: 3px solid $dark;
-    }
+    padding: 2vh 2vw;
+    text-align: center;
   }
 
   .video-title {
