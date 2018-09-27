@@ -313,6 +313,16 @@ video {
   display: none;
 }
 
+.thumbnail-image-home {
+  height: 10vw;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: $radius;
+  -webkit-backface-visibility: hidden;
+  display: none;
+}
+
 .category-image-container {
   position: relative;
   text-align: center;
@@ -512,6 +522,13 @@ video {
 .forty-eight {
   margin: 0;
   width: 48%;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.forty-nine {
+  margin: 0;
+  width: 49%;
   display: inline-block;
   vertical-align: bottom;
 }
@@ -1338,6 +1355,10 @@ select {
   }
 
   .thirty-two {
+    width: 100%;
+  }
+
+  .forty-nine {
     width: 100%;
   }
 

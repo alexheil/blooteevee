@@ -51,7 +51,7 @@
               You are not subscribed to anyone... yet, but here are some awesome videos for you to watch.
             </div>
             <div class="flex">
-              <% @subscriptions.each do |video| %>
+              <% Video.all.each do |video| %>
                 <div class="twenty-four border">
 
                   <%= link_to user_video_path(video.user, video) do %>
@@ -84,40 +84,157 @@
 
     <% else %>
 
-      <div class="form-container padding-vertical-large">
+      <div class="padding-top-large">
 
-        <div class="mid-text padding-bottom-large center">
-          Register
+        <div class="flex">
+
+          <div class="forty-nine">
+            <div class="mid-text padding-bottom-large center">
+              Register
+            </div>
+
+            <div class="padding-vertical form-border">
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                <%= devise_error_messages! %>
+
+                <div class="field">
+                  <%= f.label :username %>
+                  <%= f.text_field :username, class: "text-field" %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :email %>
+                  <%= f.email_field :email, class: "text-field" %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :password %> <span class="dark mini-text">6 characters minimum.</span>
+                  <%= f.password_field :password, autocomplete: "off", class: "text-field" %>
+                </div>
+
+                <div class="">
+                  <%= f.submit "Register", class: "submit-button" %>
+                </div>
+              <% end %>
+            </div>
+
+            <div class="mid-text padding-vertical-large center">
+              Sign in
+            </div>
+
+            <div class="padding-bottom form-border">
+              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <div class="field">
+                  <%= f.label :login, "Username or email" %>
+                  <%= f.text_field :login, class: "text-field" %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :password %> <%= link_to "I forgot my password.", new_user_password_path, class: "mini-text" %>
+                  <%= f.password_field :password, autocomplete: "off", class: "text-field" %>
+                </div>
+
+                <% if devise_mapping.rememberable? -%>
+                  <div class="field">
+                    <%= f.check_box :remember_me %>
+                    <%= f.label :remember_me %>
+                  </div>
+                <% end -%>
+
+                <div class="">
+                  <%= f.submit "Sign in", class: "submit-button" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="forty-nine">
+            <div class="mid-text padding-bottom-large center">
+              Why join?
+            </div>
+
+            <div class="padding-vertical form-border">
+              <div class="flex">
+
+                <div class="forty-nine">
+                  <div class="padding-bottom"><img class="thumbnail-image-home" src="https://i.imgur.com/o9DA68w.jpg"></div>
+                </div>
+                <div class="forty-nine">
+                  <div class="padding-bottom">Lurker? Perfect! Me too. You get to watch as many free videos as you want whenever you want.</div>
+                </div>
+
+              <div class="forty-nine">
+                <div class="padding-bottom">Content creator? Upload sweet, quality content for all the awesome viewers out there. You can even upload premium content!</div>
+              </div>
+              <div class="forty-nine">
+                <div class="padding-bottom"><img class="thumbnail-image-home" src="https://i.imgur.com/o9DA68w.jpg"></div>
+              </div>
+
+                <div class="forty-nine">
+                  <div class="padding-bottom"><img class="thumbnail-image-home" src="https://i.imgur.com/o9DA68w.jpg"></div>
+                </div>
+                <div class="forty-nine">
+                  <div class="padding-bottom">Subscribe to all of your favorite content creators, who will choose whether a subscription is free or premium.</div>
+                </div>
+
+                <div class="forty-nine">
+                  <div class="padding-bottom">All users keep 85 percent of their earnings. That's right! Bloo TeeVee only keeps 15 percent as a platform fee, which means you keep the money you earn.</div>
+                </div>
+                <div class="forty-nine">
+                  <div class="padding-bottom"><img class="thumbnail-image-home" src="https://i.imgur.com/o9DA68w.jpg"></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="padding-vertical form-border">
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            <%= devise_error_messages! %>
+      </div>
 
-            <div class="field">
-              <%= f.label :username %>
-              <%= f.text_field :username, class: "text-field" %>
-            </div>
+      <div class="flex padding-vertical-large">
+        <aside class="sidebar">
+          <ul>
+            <% User.all.each do |user| %>
+              <%= link_to user_path(user) do %>
+                <li class="inactive-sidebar-tab"><%= user.profile.display_name.presence || user.username %>
+                <% end %>
+            <% end %>
+          </ul>
+        </aside>
 
-            <div class="field">
-              <%= f.label :email %>
-              <%= f.email_field :email, class: "text-field" %>
-            </div>
+        <main class="content">
+          <div class="padding-bottom">
+            You are not signed in... yet, but here are some awesome videos for you to watch.
+          </div>
+          <div class="flex">
+            <% Video.all.each do |video| %>
+              <div class="twenty-four border">
 
-            <div class="field">
-              <%= f.label :password %> <span class="dark mini-text">6 characters minimum.</span>
-              <%= f.password_field :password, autocomplete: "off", class: "text-field" %>
-            </div>
+                <%= link_to user_video_path(video.user, video) do %>
+                  <img class="thumbnail-image-feed-four" src="<%= video.image_url(:thumb) %>">
+                <% end %>
 
-            <div class="">
-              <%= f.submit "Register", class: "submit-button" %>
-            </div>
-          <% end %>
-        </div>
+                <div class="padding-horizontal-mini padding-vertical-mini border-top">
+                  <div class="video-title">
+                    <%= link_to video.title, user_video_path(video.user, video) %>
+                  </div>
 
-        <div class="padding-top center">
-          <%= link_to "But I already have an account.", sign_in_path %>
-        </div>
+                  <div class="mini-text">
+                    <div class="flex">
+                      <div class="forty-eight">
+                        <%= link_to video.user.profile.display_name.presence || video.user.username, user_path(video.user), class: "black-link" %>
+                      </div>
+                      <div class="forty-eight right">
+                        <%= remove_unwanted_words time_ago_in_words(video.created_at) %> ago
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            <% end %>
+          </div>
+        </main>
       </div>
 
     <% end %>

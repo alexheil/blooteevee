@@ -377,6 +377,7 @@ var imageLoading = function() {
   $('.video-player').fadeIn(1000);
   $('.thumbnail-image-category').fadeIn(1000);
   $('.category-image-container').fadeIn(1000);
+  $('.thumbnail-image-home').fadeIn(1000);
 
 };
 
