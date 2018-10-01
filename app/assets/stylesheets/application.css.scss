@@ -159,6 +159,15 @@ a {
   font-weight: 700;
 }
 
+.link-light {
+  a {
+    color: $light;
+    &:hover {
+      color: $dark;
+    }
+  }
+}
+
 .link-color {
   color: white;
   a {
@@ -766,7 +775,7 @@ video {
   font-size: .75em;
   text-align: center;
   color: $black;
-  padding-bottom: 2vh;
+  padding-bottom: 1vh;
 }
 
 /* ****************** FORMS ****************** */
@@ -774,12 +783,6 @@ video {
 .form-container {
   width: 40%;
   margin: 0 auto;
-  a {
-    color: $light;
-    &:hover {
-      color: $dark;
-    }
-  }
   .main-color {
     a {
       color: $main;
@@ -793,6 +796,14 @@ video {
       color: $white;
       &:hover {
         color: $white;
+      }
+    }
+  }
+  .link-light {
+    a {
+      color: $light;
+      &:hover {
+        color: $dark;
       }
     }
   }

@@ -16,7 +16,7 @@
           </div>
 
           <div class="field">
-            <%= f.label :password %> <%= link_to "I forgot my password.", new_user_password_path, class: "mini-text" %>
+            <%= f.label :password %> <span class="link-light"><%= link_to "I forgot my password.", new_user_password_path, class: "mini-text" %></span>
             <%= f.password_field :password, autocomplete: "off", class: "text-field" %>
           </div>
 
@@ -33,7 +33,7 @@
         <% end %>
       </div>
 
-      <div class="padding-top center">
+      <div class="padding-top center link-light">
         <%= link_to "But I don't have an account yet.", register_path %>
       </div>
 
