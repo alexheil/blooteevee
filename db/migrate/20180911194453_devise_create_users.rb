@@ -38,9 +38,13 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.boolean :purchase_email, default: true
       t.boolean :refund_email, default: true
       t.boolean :subscription_email, default: true
-      t.boolean :review_email, default: true
+      t.boolean :suggestion_email, default: true
       t.boolean :comment_email, default: true
       t.boolean :message_email, default: true
+      t.boolean :video_email, default: true
+      t.boolean :post_email, default: true
+      t.boolean :update_email, default: true
+
 
       t.string :customer_id, default: ""
 

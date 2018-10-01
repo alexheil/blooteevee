@@ -135,9 +135,12 @@ ActiveRecord::Schema.define(version: 20180915012247) do
     t.boolean  "purchase_email",         default: true
     t.boolean  "refund_email",           default: true
     t.boolean  "subscription_email",     default: true
-    t.boolean  "review_email",           default: true
+    t.boolean  "suggestion_email",       default: true
     t.boolean  "comment_email",          default: true
     t.boolean  "message_email",          default: true
+    t.boolean  "video_email",            default: true
+    t.boolean  "post_email",             default: true
+    t.boolean  "update_email",           default: true
     t.string   "customer_id",            default: ""
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false

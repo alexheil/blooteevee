@@ -29,16 +29,28 @@
         <div class="form-border">
           <div class="flex">
             <div class="field-three-column">
-              <label class="inactive-paid-tab" id="third-email-tab" for="third-email-inactive">Subscriptions</label>
-              <span class="hidden"><%= f.check_box :subscription_email, id: "third-email-inactive" %></span>
+              <label class="inactive-paid-tab" id="first-email-tab" for="first-email-inactive">Subscriptions</label>
+              <span class="hidden"><%= f.check_box :subscription_email, id: "first-email-inactive" %></span>
             </div>
             <div class="field-three-column">
-              <label class="inactive-paid-tab" id="fifth-email-tab" for="fifth-email-inactive">Comments</label>
-              <span class="hidden"><%= f.check_box :comment_email, id: "fifth-email-inactive" %></span>
+              <label class="inactive-paid-tab" id="second-email-tab" for="second-email-inactive">Comments</label>
+              <span class="hidden"><%= f.check_box :comment_email, id: "second-email-inactive" %></span>
             </div>
             <div class="field-three-column">
-              <label class="inactive-paid-tab" id="sixth-email-tab" for="sixth-email-inactive">Messages</label>
-              <span class="hidden"><%= f.check_box :message_email, id: "sixth-email-inactive" %></span>
+              <label class="inactive-paid-tab" id="third-email-tab" for="third-email-inactive">Messages</label>
+              <span class="hidden"><%= f.check_box :message_email, id: "third-email-inactive" %></span>
+            </div>
+            <div class="field-three-column">
+              <label class="inactive-paid-tab" id="fourth-email-tab" for="fourth-email-inactive">Suggestions</label>
+              <span class="hidden"><%= f.check_box :suggestion_email, id: "fourth-email-inactive" %></span>
+            </div>
+            <div class="field-three-column">
+              <label class="inactive-paid-tab" id="fifth-email-tab" for="fifth-email-inactive">New Videos</label>
+              <span class="hidden"><%= f.check_box :video_email, id: "fifth-email-inactive" %></span>
+            </div>
+            <div class="field-three-column">
+              <label class="inactive-paid-tab" id="sixth-email-tab" for="sixth-email-inactive">Updates</label>
+              <span class="hidden"><%= f.check_box :update_email, id: "sixth-email-inactive" %></span>
             </div>
           </div>
 
