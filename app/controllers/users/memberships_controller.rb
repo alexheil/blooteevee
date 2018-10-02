@@ -33,7 +33,7 @@ class Users::MembershipsController < ApplicationController
       subscription.save
 
       if subscription.save
-        @user.create_membership(
+        @membership = @user.create_membership(
           stripe_subscription_id: subscription.id,
           membership_type: params[:membership][:membership_type]
         )
@@ -141,7 +141,7 @@ class Users::MembershipsController < ApplicationController
     end
 
     def send_email
-      UserMailer.membership_email_email(@user, @membership).deliver_now
+      UserMailer.membership_email(@user, @membership).deliver_now
     end
 
     def membership_params
