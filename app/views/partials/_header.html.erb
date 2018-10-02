@@ -64,6 +64,11 @@
         <% else %>
           <li><%= link_to 'MERCHANT', new_user_merchant_path(current_user), class: "nav-links" %></li>
         <% end %>
+        <% if current_user.membership.present? %>
+          <li><%= link_to 'MEMBERSHIP', edit_user_membership_path(current_user), class: "nav-links" %></li>
+        <% else %>
+          <li><%= link_to 'MEMBERSHIP', new_user_membership_path(current_user), class: "nav-links" %></li>
+        <% end %>
         <li><%= link_to 'SETTINGS', edit_user_registration_path, class: "nav-links" %></li>
         <li><%= link_to 'SIGN OUT', sign_out_path, class: "nav-links" %></li>
       <% end %>

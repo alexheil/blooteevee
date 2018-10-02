@@ -20,7 +20,7 @@ class Users::MembershipsController < ApplicationController
     # check if customer has a source on file
     if customer.default_source.blank?
       url = "#{request.protocol}#{request.host_with_port}#{request.fullpath}/edit"
-      redirect_to user_edit_source_path(@user, :url => Base64.encode64(url))
+      redirect_to edit_user_source_path(@user, :url => Base64.encode64(url))
     else
       # create a Stripe membership
       subscription = Stripe::Subscription.create({
@@ -63,10 +63,10 @@ class Users::MembershipsController < ApplicationController
     # check if customer has a source on file
     if customer.default_source.blank?
       url = "#{request.protocol}#{request.host_with_port}#{request.fullpath}/edit"
-      redirect_to edit_source_path(@user, :url => Base64.encode64(url))
+      redirect_to edit_user_source_path(@user, :url => Base64.encode64(url))
     else
       # grab Stripe membership and update it
-      subscription = Stripe::Subscription.retrieve(@membership.membership_id)
+      subscription = Stripe::Subscription.retrieve(@membership.stripe_subscription_id)
       subscription.items = [{
         id: subscription.items.data[0].id,
         plan: @membership.current_id
@@ -83,6 +83,23 @@ class Users::MembershipsController < ApplicationController
       end
     end
 
+  end
+
+  def destroy
+    @membership = @user.membership
+
+    Stripe.api_key = "sk_test_ECd3gjeIEDsGkySmF8FQOC5i"
+
+    subscription = Stripe::Subscription.retrieve(@membership.stripe_subscription_id)
+
+    if subscription.delete
+      @membership.destroy
+      redirect_to new_user_membership_path(@user)
+      flash[:notice] = "zYour membership has been deleted."
+    else
+      redirect_to new_user_membership_path(@user)
+      flash[:alert] = ""
+    end
   end
 
   private
