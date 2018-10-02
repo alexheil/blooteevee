@@ -26,7 +26,7 @@ class User < ApplicationRecord
 
   before_save :should_generate_new_friendly_id?, if: :username_changed?
   before_save :downcase_username
-  before_save :subscriber_email
+  before_save :subscribed_email
 
   def validate_username
     if User.where(email: username).exists?
@@ -72,7 +72,7 @@ class User < ApplicationRecord
 
     def subscribed_email
       User.includes(:passive_subscriptions).where(:subscriptions => { created_at: Time.zone.now.yesterday.beginning_of_day..Time.zone.now.yesterday.end_of_day }).find_each do |user|
-        UserMailer.subscriber_email(user).deliver_now unless user.subscription_email == false
+        UserMailer.subscribed_email(user).deliver_now unless user.subscription_email == false
       end
     end
 

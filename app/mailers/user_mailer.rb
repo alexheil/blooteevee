@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: 'noisaea-notifications@blooteevee.com'
+  default from: 'notifications@blooteevee.com'
 
   def subscribed_email(user)
     @user = user

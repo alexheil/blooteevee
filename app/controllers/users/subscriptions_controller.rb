@@ -1,6 +1,7 @@
 class Users::SubscriptionsController < ApplicationController
 
   before_action :authenticate_user!
+  before_action :check_default_source, only: :create
 
   def create
     @subscriber = current_user
@@ -32,7 +33,7 @@ class Users::SubscriptionsController < ApplicationController
     subscription.save
 
     if subscription.save
-      @subscriber.active_subscriptions.create(
+      @subscription = @subscriber.active_subscriptions.create(
         stripe_subscription_id: subscription.id,
         subscriber_id: @subscriber.id,
         subscribed_id: @subscribed.id,
@@ -67,8 +68,19 @@ class Users::SubscriptionsController < ApplicationController
 
   private
 
+    def check_default_source
+      @subscribed = User.friendly.find(params[:subscribed_id])
+      @subscriber = current_user
+      Stripe.api_key = "sk_test_ECd3gjeIEDsGkySmF8FQOC5i"
+      customer = Stripe::Customer.retrieve(@subscriber.customer_id)
+      if customer.default_source.blank?
+        url = user_url(@subscribed)
+        redirect_to edit_user_source_path(@subscriber, :url => Base64.encode64(url))
+      end
+    end
+
     def send_email
-      UserMailer.subscriber_email(@subscriber, @subscribed, @subscription)
+      UserMailer.subscriber_email(@subscriber, @subscribed, @subscription).deliver_now
     end
 
 end
