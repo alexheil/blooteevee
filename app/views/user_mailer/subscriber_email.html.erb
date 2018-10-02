@@ -1,7 +1,3 @@
-<p>Hey <%= @user.profile.display_name.presence || @user.username %>,</p>
-
-<p>You have new subscribers:</p>
-
-<% @user.subscribers.where(:subscriptions => { created_at: Time.zone.now.yesterday.beginning_of_day..Time.zone.now.yesterday.end_of_day }).find_each do |user| %>
-  <p><%= user.profile.display_name.presence || user.username %></p>
-<% end %>
+<%= @subscriber.username %></br>
+<%= @subscribed.username %></br>
+<%= @subscription.id %>
