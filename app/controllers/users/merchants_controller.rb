@@ -44,6 +44,7 @@ class Users::MerchantsController < ApplicationController
         country: @account.country,
         stripe_id: @account.id
       )
+      send_email
       redirect_to edit_user_merchant_path(@user, @merchant)
       flash[:notice] = "Before we can transfer your payments we need more information."
     else
@@ -135,6 +136,10 @@ class Users::MerchantsController < ApplicationController
         @merchant = @user.merchant
         redirect_to edit_user_merchants_path(@user, @merchant) if @merchant.country.present?
       end
+    end
+
+    def send_email
+      UserMailer.merchant_email(@user, @merchant).deliver_now
     end
 
 end

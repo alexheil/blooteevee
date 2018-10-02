@@ -37,6 +37,7 @@ class Users::MembershipsController < ApplicationController
           stripe_subscription_id: subscription.id,
           membership_type: params[:membership][:membership_type]
         )
+        send_email
         redirect_to user_path(@user)
       end
     end
@@ -137,6 +138,10 @@ class Users::MembershipsController < ApplicationController
         redirect_to user_path(@user)
         flash[:alert] = "This is not your profile."
       end
+    end
+
+    def send_email
+      UserMailer.membership_email_email(@user, @membership).deliver_now
     end
 
     def membership_params
