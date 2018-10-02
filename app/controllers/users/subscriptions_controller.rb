@@ -39,6 +39,7 @@ class Users::SubscriptionsController < ApplicationController
         amount: @subscribed.plan.amount,
         currency: @subscribed.plan.currency
       )
+      send_email
       redirect_to user_path(@subscribed)
       flash[:notice] = "You subscribed to #{@subscribed.profile.first_name.presence || @subscribed.username}!"
     else 
@@ -63,5 +64,11 @@ class Users::SubscriptionsController < ApplicationController
       flash[:alert] = "You did not unsubscribe from #{@subscribed.profile.first_name.presence || @subscribed.username}."
     end
   end
+
+  private
+
+    def send_email
+      UserMailer.subscriber_email(@subscriber, @subscribed, @subscription)
+    end
 
 end
