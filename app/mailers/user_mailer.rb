@@ -16,13 +16,13 @@ class UserMailer < ApplicationMailer
   def merchant_email(user, merchant)
     @user = user
     @merchant = merchant
-    mail(to: @user.email, subject: 'You\'re a new subscriber! | Bloo TeeVee')
+    mail(to: @user.email, subject: 'You\'ve set up a merchant account on Bloo TeeVee!')
   end
 
   def membership_email(user, membership)
     @user = user
     @membership = membership
-    mail(to: @user.email, subject: 'You\'re a new subscriber! | Bloo TeeVee')
+    mail(to: @user.email, subject: 'You are now a member of Bloo TeeVee')
   end
 
 end

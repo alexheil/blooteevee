@@ -45,17 +45,17 @@
         </div>
         <span class="bold">We'll be using it for advertising</span> - obviously we only make money if you make money, so we're going to be putting every last penny into advertising to bring new subscribers to you. You'll benefit from this as much as we do!
         </div>
-      </div>
 
-      <div class="padding-vertical dark center">
-        By clicking below you will be charged $3.00 (USD) per month until you cancel. You can cancel at any time. The card you have on file will be charged today.
-      </div>
+        <div class="padding-vertical dark center">
+          By clicking below you will be charged $3.00 (USD) per month until you cancel. You can cancel at any time. The card you have on file will be charged today.
+        </div>
 
-      <div class="form-border">
-        <%= form_for(@membership, url: user_membership_path(@user)) do |f| %>
-        <%= f.hidden_field :membership_type, :value => "basic" %>
-        <%= f.submit "Become a member", data: { disable_with: 'Creating...' }, class: "submit-button" %>
-        <% end %>
+        <div class="form-border">
+          <%= form_for(@membership, url: user_membership_path(@user)) do |f| %>
+          <%= f.hidden_field :membership_type, :value => "basic" %>
+          <%= f.submit "Become a member", data: { disable_with: 'Creating...' }, class: "submit-button" %>
+          <% end %>
+        </div>
       </div>
 
     </div>
