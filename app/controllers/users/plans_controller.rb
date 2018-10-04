@@ -2,10 +2,11 @@ class Users::PlansController < ApplicationController
 
   before_action :authenticate_user!
   before_action :merchant_account
+  before_action :correct_user
+  before_action :set_user
 
   def new
     if user_signed_in? && current_user.merchant.present?
-      @user = current_user
       @plan = Plan.new
 
       Stripe.api_key = "sk_test_ECd3gjeIEDsGkySmF8FQOC5i"
@@ -19,8 +20,6 @@ class Users::PlansController < ApplicationController
   end
 
   def create
-    @user = current_user
-
     Stripe.api_key = "sk_test_ECd3gjeIEDsGkySmF8FQOC5i"
 
     plan = Stripe::Plan.create({
@@ -53,7 +52,6 @@ class Users::PlansController < ApplicationController
 
   def edit
     if user_signed_in? && current_user.merchant.present?
-      @user = current_user
       @plan = @user.plan
 
     elsif user_signed_in? && current_user.merchant.nil?
@@ -65,7 +63,6 @@ class Users::PlansController < ApplicationController
   end
 
   def update
-    @user = current_user
     @plan = @user.plan
 
     Stripe.api_key = "sk_test_ECd3gjeIEDsGkySmF8FQOC5i"
@@ -105,27 +102,41 @@ class Users::PlansController < ApplicationController
   end
 
   def destroy
-    @user = current_user
     @plan = @user.plan
 
     Stripe.api_key = "sk_test_ECd3gjeIEDsGkySmF8FQOC5i"
 
-    plan = Stripe::Plan.retrieve(@user.plan.plan_id, stripe_account: @user.merchant.stripe_id)
-    plan.delete
-    product = Stripe::Product.retrieve(@user.plan.product_id, stripe_account: @user.merchant.stripe_id)
-    product.delete
-
-    redirect_to user_path(@user)
-    flash[:notice] = "You have successfully deleted your subscription!"
+    plan = Stripe::Plan.retrieve(@plan.plan_id, stripe_account: @user.merchant.stripe_id)
+    product = Stripe::Product.retrieve(@plan.product_id, stripe_account: @user.merchant.stripe_id)
+    if plan.delete && product.delete
+      @plan.destroy
+      redirect_to user_path(@user)
+      flash[:notice] = "You have successfully deleted your subscription!"
+    else
+      redirect_to user_path(@user)
+      flash[:alert] = "You were unable to delete your subscription!"
+    end
   end
 
   private
+
+    def set_user
+      @user = current_user
+    end
 
     def merchant_account
       @user = current_user
       if @user.merchant.nil?
         redirect_to new_user_merchant_path(@user)
         flash[:alert] = "You need to set up a merchant account first."
+      end
+    end
+
+    def correct_user
+      @user = User.friendly.find(params[:user_id])
+      if current_user != @user
+        redirect_to user_path(@user)
+        flash[:alert] = "This is not you."
       end
     end
 

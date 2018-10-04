@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     resource :source, controller: 'users/sources', only: [:edit, :update]
     resource :membership, controller: 'users/memberships', except: [:show, :index]
     resource :merchant, controller: 'users/merchants', only: [:new, :create, :edit, :update]
-    resource :plan, controller: 'users/plans', only: [:new, :create, :edit, :update]
+    resource :plan, controller: 'users/plans', except: [:show, :index]
     resources :videos, controller: 'users/videos', except: :index do
       resources :comments, controller: 'users/comments', only: [:create, :update, :destroy]
     end
