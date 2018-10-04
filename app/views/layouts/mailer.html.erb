@@ -77,10 +77,79 @@
       .center {
         text-align: center;
       }
+      .header-container {
+        width: 100%;
+        margin: 0 auto;
+        background: #ffffff;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+        a {
+          color: #211725;
+        }
+      }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+      }
+      .nav .site-title {
+        display: inline-block;
+        width: 24%;
+        font-weight: 400;
+        text-transform: uppercase;
+      }
+
+      .full-footer-container {
+        width: 100%;
+        clear: both;
+        background: #ffffff;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+      }
+      .footer {
+        font-size: .75em;
+        text-transform: uppercase;
+        width: 100%;
+        display: inline-block;
+        text-align: center;
+      }
+      .footer-disclaimer {
+        font-size: .75em;
+        text-align: center;
+        color: #211725;
+      }
     </style>
   </head>
 
   <body>
+
+    <div class="wrapper header-container">
+      <div class="container">
+        <nav class="nav padding-vertical-large">
+          <div class="site-title">
+            <%= link_to 'Bloo Tee Vee', root_url %>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+
     <%= yield %>
+
+    <footer class="full-footer-container wrapper">
+      <div class="container padding-top">
+        <nav class="footer">
+          <span><%= link_to "Bloo TeeVee", root_url, class: "nav-links" %></span>
+        </nav>
+        <div class="footer-disclaimer">
+          <%= link_to "Unsubscribe", edit_user_registration_url(@user) %>
+        </div>
+        <div class="footer-disclaimer">
+          Bloo TeeVee. 769 Columbus Pkwy, Buffalo, NY 14213
+        </div>
+        <div class="footer-disclaimer">
+          Built in Buffalo, New York, United States of America, Earth.
+        </div>
+      </div>
+    </footer>
+
+
   </body>
 </html>

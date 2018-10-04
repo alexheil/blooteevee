@@ -4,7 +4,7 @@
     <div class="padding-vertical-large">
       <div class="mid-container">
 
-        <img class="thumbnail-image" src="https://i.imgur.com/Ia3I7XE.jpg">
+        <img class="thumbnail-image" src="https://i.imgur.com/F7UHtzn.jpg">
 
       </div>
     </div>
@@ -30,7 +30,7 @@
         </div>
 
         <div class="padding-vertical">
-          Although, you now have access to all of <%= @subscribed.profile.display_name.presence || @subscribed.username %>'s videos, so I doubt you'd ever cancel.
+          Although, you now have access to all of <%= @subscribed.profile.display_name.presence || @subscribed.username %>'s videos, so I doubt you'd ever think about that!
         </div>
 
         <div class="padding-vertical">
@@ -42,7 +42,7 @@
         </div>
 
         <div class="padding-top">
-          <%= link_to "It's time to go have fun with you new subscription", user_url(@subscribed) %>
+          <%= link_to "It's time to go have fun with your new subscription.", user_url(@subscribed) %>
         </div>
 
       </div>
@@ -50,8 +50,3 @@
 
   </div>
 </div>
-
-
-<%= @subscriber.username %></br>
-<%= @subscribed.username %></br>
-<%= @subscription.id %>
