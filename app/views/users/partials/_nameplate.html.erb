@@ -21,7 +21,7 @@
               <% else %>
                 <%= form_for(current_user.active_subscriptions.build) do |f| %>
                   <div><%= hidden_field_tag :subscribed_id, @user.id %></div>
-                  <%= f.submit "Subscribe - #{@user.plan.amount} #{@user.plan.currency} per month", data: { confirm: "Are you sure?" }, class: "submit-button" %>
+                  <%= f.submit "Subscribe - #{@user.plan.amount} #{@user.plan.currency} per month", data: { confirm: "Just double checking... because your current card will be charged right now." }, class: "submit-button" %>
                 <% end %>
               <% end %>
             <% else %>
