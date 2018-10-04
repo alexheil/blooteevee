@@ -104,6 +104,21 @@ class Users::PlansController < ApplicationController
     end
   end
 
+  def destroy
+    @user = current_user
+    @plan = @user.plan
+
+    Stripe.api_key = "sk_test_ECd3gjeIEDsGkySmF8FQOC5i"
+
+    plan = Stripe::Plan.retrieve(@user.plan.plan_id, stripe_account: @user.merchant.stripe_id)
+    plan.delete
+    product = Stripe::Product.retrieve(@user.plan.product_id, stripe_account: @user.merchant.stripe_id)
+    product.delete
+
+    redirect_to user_path(@user)
+    flash[:notice] = "You have successfully deleted your subscription!"
+  end
+
   private
 
     def merchant_account
