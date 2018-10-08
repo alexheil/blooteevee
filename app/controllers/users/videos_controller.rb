@@ -13,7 +13,9 @@ class Users::VideosController < ApplicationController
     @user = User.friendly.find(params[:user_id])
     @video = Video.friendly.find(params[:id])
     @comment = Comment.new
-    impressionist(@video)
+    if @video.free? || (user_signed_in? && (current_user.subscribing?(@user)) || (current_user == @user))
+      impressionist(@video)
+    end
   end
 
   def new
