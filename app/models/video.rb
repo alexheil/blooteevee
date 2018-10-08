@@ -2,6 +2,8 @@ class Video < ApplicationRecord
   extend FriendlyId
   friendly_id :slug, use: :slugged
 
+  is_impressionable :counter_cache => true, :column_name => :view_count
+
   include VideoUploader[:video]
   include ImageUploader[:image]
 
