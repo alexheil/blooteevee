@@ -44,18 +44,17 @@
           <span class="bold">Allows us to cover the cost of hosting</span> - video hosting isn’t cheap. It costs around $0.02 (USD) per GB of image and video. That doesn’t seem like a lot, but it adds up. A 4 minute video is around 1 GB. If you upload 30 4 minute videos a month it costs 1.80 per month. The monthly fee goes straight to this.
         </div>
         <span class="bold">We'll be using it for advertising</span> - obviously we only make money if you make money, so we're going to be putting every last penny into advertising to bring new subscribers to you. You'll benefit from this as much as we do!
-        </div>
+      </div>
 
-        <div class="padding-vertical dark center">
-          By clicking below you will be charged $3.00 (USD) per month until you cancel. You can cancel at any time. The card you have on file will be charged today.
-        </div>
+      <div class="padding-vertical dark center">
+        By clicking below you will be charged $3.00 (USD) per month until you cancel. You can cancel at any time. The card you have on file will be charged today.
+      </div>
 
-        <div class="form-border">
-          <%= form_for(@membership, url: user_membership_path(@user)) do |f| %>
-          <%= f.hidden_field :membership_type, :value => "basic" %>
-          <%= f.submit "Become a member", data: { disable_with: 'Creating...' }, class: "submit-button" %>
-          <% end %>
-        </div>
+      <div class="form-border">
+        <%= form_for(@membership, url: user_membership_path(@user)) do |f| %>
+        <%= f.hidden_field :membership_type, :value => "basic" %>
+        <%= f.submit "Become a member", data: { disable_with: 'Creating...' }, class: "submit-button" %>
+        <% end %>
       </div>
 
     </div>

@@ -12,81 +12,84 @@
         <%= f.hidden_field :user_id %>
         <%= render 'partials/errors/merchant_errors' %>
           
-          <div class="form-border">
-            <div class="flex">
-              <div class="field-two-column">
-                <%= f.label :first_name %>
-                <%= f.text_field :first_name, class: "text-field" %>
-              </div>
-              <div class="field-two-column">
-                <%= f.label :last_name %>
-                <%= f.text_field :last_name, class: "text-field" %>
-              </div>
+        <div class="form-border">
+          <div class="flex">
+            <div class="field-two-column">
+              <%= f.label :first_name %>
+              <%= f.text_field :first_name, class: "text-field" %>
             </div>
-            <div class="flex">
-              <div class="field-three-column-top">
-                <%= f.label :month %> <span class="dark mini-text">(MM)</span>
-                <%= f.text_field :month, class: "text-field" %>
-              </div>
-              <div class="field-three-column-top">
-                <%= f.label :day %> <span class="dark mini-text">(DD)</span>
-                <%= f.text_field :day, class: "text-field" %>
-              </div>
-              <div class="field-three-column-top">
-                <%= f.label :year %> <span class="dark mini-text">(YYYY)</span>
-                <%= f.text_field :year, class: "text-field" %>
-              </div>
+            <div class="field-two-column">
+              <%= f.label :last_name %>
+              <%= f.text_field :last_name, class: "text-field" %>
             </div>
           </div>
-
-          <div class="padding-vertical dark center">
-            None of the information below is saved in Bloo TeeVee's database. Bloo TeeVee will not have access to this information after this moment via this website.
+          <div class="flex">
+            <div class="field-three-column-top">
+              <%= f.label :month %> <span class="dark mini-text">(MM)</span>
+              <%= f.text_field :month, class: "text-field" %>
+            </div>
+            <div class="field-three-column-top">
+              <%= f.label :day %> <span class="dark mini-text">(DD)</span>
+              <%= f.text_field :day, class: "text-field" %>
+            </div>
+            <div class="field-three-column-top">
+              <%= f.label :year %> <span class="dark mini-text">(YYYY)</span>
+              <%= f.text_field :year, class: "text-field" %>
+            </div>
           </div>
+        </div>
 
-          <div class="form-border">
-            <% if @merchant.country == 'US' %>
-              <div class="field">
-                <%= f.label :line1, "Street address" %>
-                <%= f.text_field :line1, required: true, class: "text-field" %>
-              </div>
-              <div class="flex">
-                <div class="field-three-column">
-                  <%= f.label :city %>
-                  <%= f.text_field :city, required: true, class: "text-field" %>
-                </div>
-                <div class="field-three-column">
-                  <%= f.label :state %>
-                  <%= f.text_field :state, required: true, class: "text-field" %>
-                </div>
-                <div class="field-three-column">
-                  <%= f.label :postal_code %>
-                  <%= f.text_field :postal_code, required: true, class: "text-field" %>
-                </div>
-              <% else %>
-                <div class="field">
-                  <%= f.label :line1, "Street address" %>
-                  <%= f.text_field :line1, required: true, class: "text-field" %>
-                </div>
-                <div class="flex">
-                  <div class="field-two-column">
-                    <%= f.label :city %>
-                    <%= f.text_field :city, required: true, class: "text-field" %>
-                  </div>
-                  <div class="field-two-column">
-                    <%= f.label :postal_code %>
-                    <%= f.text_field :postal_code, required: true, class: "text-field" %>
-                  </div>
-                <% end %>
+        <div class="padding-vertical dark center">
+          None of the information below is saved in Bloo TeeVee's database. Bloo TeeVee will not have access to this information after this moment via this website.
+        </div>
 
-              <div class="field-two-column">
-                <%= f.label :country %>
-                <%= f.select :country, options_for_select(country) %>
+        <div class="form-border">
+          <% if @merchant.country == 'US' %>
+            <div class="field">
+              <%= f.label :line1, "Street address" %>
+              <%= f.text_field :line1, required: true, class: "text-field" %>
+            </div>
+            <div class="flex">
+              <div class="field-three-column">
+                <%= f.label :city %>
+                <%= f.text_field :city, required: true, class: "text-field" %>
               </div>
-              <div class="field-two-column">
-                <%= f.label :currency %>
-                <%= f.select :currency, options_for_select(currency) %>
+              <div class="field-three-column">
+                <%= f.label :state %>
+                <%= f.text_field :state, required: true, class: "text-field" %>
+              </div>
+              <div class="field-three-column">
+                <%= f.label :postal_code %>
+                <%= f.text_field :postal_code, required: true, class: "text-field" %>
               </div>
             </div>
+          <% else %>
+            <div class="field">
+              <%= f.label :line1, "Street address" %>
+              <%= f.text_field :line1, required: true, class: "text-field" %>
+            </div>
+            <div class="flex">
+              <div class="field-two-column">
+                <%= f.label :city %>
+                <%= f.text_field :city, required: true, class: "text-field" %>
+              </div>
+              <div class="field-two-column">
+                <%= f.label :postal_code %>
+                <%= f.text_field :postal_code, required: true, class: "text-field" %>
+              </div>
+            </div>
+          <% end %>
+
+          <div class="flex">
+            <div class="field-two-column">
+              <%= f.label :country %>
+              <%= f.select :country, options_for_select(country) %>
+            </div>
+            <div class="field-two-column">
+              <%= f.label :currency %>
+              <%= f.select :currency, options_for_select(currency) %>
+            </div>
+          </div>
 
           <% if @merchant.country == 'US' %>
 
@@ -104,7 +107,7 @@
           <% end %>
         </div>
 
-        <div class="mid-text padding-vertical-large center border-top">
+        <div class="mid-text padding-vertical-large center">
           Where will your money go?
         </div>
 
