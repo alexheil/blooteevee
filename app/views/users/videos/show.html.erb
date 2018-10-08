@@ -74,7 +74,7 @@
           <%= link_to @user.profile.display_name.presence || @user.username, user_path(@user) %> posted <%= remove_unwanted_words time_ago_in_words(@video.created_at) %> ago (<%= @video.created_at.strftime("%m.%d.%Y") %>)
         </div>
         <div>
-          <%= Time.at(@video.video.duration).utc.strftime("%H:%M:%S") %> - <%= truncate(@video.description, length: 140) %>
+          <%= truncate(@video.description, length: 140) %>
           <span id="expand-description">
             expand
           </span>
@@ -84,7 +84,7 @@
 
       <div class="thirteen form-border">
         <div class="padding-bottom-mini">
-          76,654 views
+          <%= pluralize(@video.view_count, "view") %>
         </div>
         <div id="share-button-click" class="fake-button-dark">
           Share

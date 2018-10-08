@@ -157,6 +157,7 @@ ActiveRecord::Schema.define(version: 20180915012247) do
     t.text     "image_data"
     t.text     "description"
     t.integer  "policy_type",    default: 0
+    t.integer  "view_count",     default: 0
     t.string   "slug"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
