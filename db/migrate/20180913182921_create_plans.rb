@@ -9,5 +9,8 @@ class CreatePlans < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
+
+    add_index :plans, :plan_id
+    add_index :plans, :product_id
   end
 end
